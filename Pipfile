@@ -4,6 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+redis = "*"
+rpyc = "*"
+zmq = "*"
+ipython = "*"
+jupyter = "*"
+ipyparallel = "*"
 
 [dev-packages]
 
