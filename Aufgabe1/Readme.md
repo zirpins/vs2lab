@@ -240,7 +240,7 @@ und deren Abfolge festlegen.
 … Bei Bedarf
 
 - Falls die Einrichtung der Umgebung per ``pipenv install``zu Fehlern führt,
-  versuchen Sie, die Datei pipfile.lock zu löschen.
+  versuchen Sie, die Datei ``Pipfile.lock`` zu löschen.
 
 ### 4.4 Abgabe
 
