@@ -206,7 +206,7 @@ die Socket Schnittstelle.
 
 Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienstaufrufe vom 
 Benutzer als Python Funktionen aufgerufen werden können und wo die Ausgabe der 
-#Ergebnisse erfolgt.
+Ergebnisse erfolgt.
 
 Auch der Telefonauskunft Dienst soll als Prozess in einem zweiten Jupyter 
 Notebook laufen. Die Schnittstelle des Telefonauskunft Dienst soll zwei 
