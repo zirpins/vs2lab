@@ -99,7 +99,7 @@ Wiederholen Sie dies danach für den Client:
 
 ```
 $ cd vs2lab/Aufgabe1
-$ pipenv run python server.py
+$ pipenv run python client.py
 ```
 
 Am Ende sind beide Skripte wieder terminiert.
