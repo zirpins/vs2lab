@@ -170,11 +170,23 @@ Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öf
 
 ### 2.5. Hinweise zur Installation
 
+#### 2.5.1. Anaconda
+
 Für Python existieren auch komplette Distributionen, die verschiedene Tools beinhalten, z.B.:
 
 - [Anaconda](https://www.anaconda.com) 
 
 Anaconda vereinfacht die Installation und beinhaltet z.B. schon die *Spyder IDE* und *Jupiter Notebooks*. Zudem verwendet Anaconda eine eigene Lösung für virtuelle Umgebungen in Python. Es zielt vor allem auf wissenschaftliche Anwendungen von Python. Das VS2 Labor ist nicht auf Anaconda ausgelegt, sollte aber darauf übertragbar sein.
+
+### 2.5.2. Troubleshooting
+
+- Für alle ``pipenv`` Aufrufe sollten Sie sich im Wurzelverzeichnis (vs2lab) befinden.
+- Falls die Einrichtung der Umgebung per ``pipenv install``zu Fehlern führt,
+  versuchen Sie, die Datei ``Pipfile.lock`` zu löschen.
+- Als weitere Möglichkeit können Sie Packages einzeln installieren per 
+  ``pipenv install <modul>`` (Package Namen stehen im Pipfile)
+
+... to be continued.
 
 ## 3. Aufgaben
 

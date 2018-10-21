@@ -237,11 +237,7 @@ und deren Abfolge festlegen.
 
 ### 4.3 Tipps
 
-- Für alle ``pipenv`` Aufrufe sollten Sie sich im Wurzelverzeichnis befinden.
-- Falls die Einrichtung der Umgebung per ``pipenv install``zu Fehlern führt,
-  versuchen Sie, die Datei ``Pipfile.lock`` zu löschen.
-- Als weitere Möglichkeit können Sie Module einzeln installieren per 
-  ``pipenv install <modul>``
+... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
 ### 4.4 Abgabe
 
