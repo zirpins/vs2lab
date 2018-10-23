@@ -180,12 +180,24 @@ Anaconda vereinfacht die Installation und beinhaltet z.B. schon die *Spyder IDE*
 
 ### 2.5.2. Troubleshooting
 
+**GIT** 
+
+-  Bei Problemen mit dem selbstsignierten SSL Zertifikat des GitLab Servers kann dessen Verifikation wie folgt umgangen werden:
+
+```
+$ git -c http.sslVerify=false clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
+```
+
+- Bei Problemen mit der HTTPS Verbindung kann das Repository auch per ``ssh`` 'gecloned' werden. Hierzu benögen Sie ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel hinterlegen. Bitte wenden Sie sich dazu bei Bedarf an einen Dozenten.
+
+**pipenv**
+
 - Für alle ``pipenv`` Aufrufe sollten Sie sich im Wurzelverzeichnis (vs2lab) befinden.
 - Falls die Einrichtung der Umgebung per ``pipenv install``zu Fehlern führt,
   versuchen Sie, die Datei ``Pipfile.lock`` zu löschen.
 - Als weitere Möglichkeit können Sie Packages einzeln installieren per 
   ``pipenv install <modul>`` (Package Namen stehen im Pipfile)
-
+  
 ... to be continued.
 
 ## 3. Aufgaben
