@@ -16,11 +16,7 @@ test_lab:
     # - pipenv install
     # - python Aufgabe1/clientserver_test.py
     - which python
-    - which pip
-    - which pipenv
-    - which python3
-    - which pip3
     - python --version
-    - python3 Aufgabe1/clientserver_test.py
+    # - python Aufgabe1/clientserver_test.py
   tags:
     - debian
