@@ -1,6 +1,20 @@
-test:
+############
+## Stages
+############
+stages:
+  - test
+
+############
+## Testing
+############
+test_lab:
+  stage: test
   script:
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip pipenv
-  - pipenv install
-  - python Aufgabe1/clientserver_test.py
+    # - apt-get update -qy
+    # - apt-get install -y python-dev python-pip
+    # - pip3 install pipenv
+    # - pipenv install
+    # - python Aufgabe1/clientserver_test.py
+    - python Aufgabe1/clientserver_test.py
+  tags:
+    - debian
