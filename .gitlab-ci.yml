@@ -11,12 +11,14 @@ test_lab:
   stage: test
   script:
     # - apt-get update -qy
-    # - apt-get install -y python-dev python-pip
+    # - apt-get -y upgrade
+    # - python3 -V
+    # - apt-get install -y python3-pip
+    # - apt-get build-essential libssl-dev libffi-dev python-dev
     # - pip3 install pipenv
     # - pipenv install
-    # - python Aufgabe1/clientserver_test.py
+    # - pipenv run python Aufgabe1/clientserver_test.py
     - which python
     - python --version
-    # - python Aufgabe1/clientserver_test.py
   tags:
     - debian
