@@ -2,7 +2,7 @@ import logging
 import socket
 
 import constCS
-import lab_logging
+from context import lab_logging
 
 lab_logging.setup()  # init loging channels for the lab
 

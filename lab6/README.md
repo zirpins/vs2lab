@@ -1,0 +1,1 @@
+# Labor 6 Fehlertoleranz mit 2-Phasen Commit Protokoll
