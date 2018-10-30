@@ -29,7 +29,7 @@ Alle Komponenten lassen sich auf den gängigen Plattformen trivial einfach insta
 
 ### 2.1. Labor Repository
 
-Das Labor nutz die Git Versionsverwaltung und den GitLab Dienst zur Bereitstellung der Labordateien als git Repository. Git muss auf dem verwendeten Rechner verfügbar sein.
+Das Labor nutzt die Git Versionsverwaltung und den GitLab Dienst zur Bereitstellung der Labordateien als git Repository. Git muss auf dem verwendeten Rechner verfügbar sein.
 
 - [Git](https://git-scm.com)
 
@@ -39,7 +39,7 @@ Wenn ``git`` vorhanden ist, dann kopieren Sie das Labor Repository wie folgt (au
 git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
 ```
 
-### 2.2. Laufzeitplatttform
+### 2.2. Laufzeitplattform
 
 Das Labor basiert auf **Python** und setzt (ab Aufgabe 2) eine **Redis** Installation voraus.
 
@@ -183,13 +183,13 @@ Anaconda vereinfacht die Installation und beinhaltet z.B. schon die *Spyder IDE*
 
 **GIT** 
 
--  Bei Problemen mit dem selbstsignierten SSL Zertifikat des GitLab Servers kann dessen Verifikation wie folgt umgangen werden:
+-  Bei Problemen mit dem selbst-signierten SSL Zertifikat des GitLab Servers kann dessen Verifikation wie folgt umgangen werden:
 
 ```
 $ git -c http.sslVerify=false clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
 ```
 
-- Bei Problemen mit der HTTPS Verbindung kann das Repository auch per ``ssh`` 'gecloned' werden. Hierzu benögen Sie ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel hinterlegen. Bitte wenden Sie sich dazu bei Bedarf an einen Dozenten.
+- Bei Problemen mit der HTTPS Verbindung kann das Repository auch per ``ssh`` 'gecloned' werden. Hierzu benötigen Sie ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel hinterlegen. Bitte wenden Sie sich dazu bei Bedarf an einen Dozenten.
 
 **pipenv**
 

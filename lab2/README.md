@@ -1,12 +1,22 @@
 # Labor 2 Kommunikation per Remote Procedure Call (RPC)
 
+Das zweite Labor beschäftigt sich hauptsächlich mit **RPC-Kommunikation** in verschiedenen Varianten. Ein erstes Beispiel zeigt eine einfache RPC-Implementierung im Detail und nutzt dabei einen generischen **Kommunikationskanal (Channel)** den wir später noch öfter verwenden werden. Ein zweites Beispiel zeigt kurz die Anwendung des speziellen RPC Frameworks **rpyc**. Die Programmieraufgabe beschäftigt sich mit der Erweiterung der einfachen RPC-Implementierung um **asynchrone RPCs**.
+
+Allgemein **Ziele** dieses Labors:
+
+- *Verständnis* von **RPCs** und deren *Anwendung*
+- Fähigkeit zur *Implementierung* von **RPC-Middleware**
+- Kennenlernen des **`lab_channel` Mechanismus**
+- Verständnis von **Client Threads**
+- Verwendung des Python **`threading` Moduls**
+
 ## 1. Vorbereitung
 ### 1.1. Software installieren
 
 Sie haben in [Aufgabe 1](https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab/tree/master/Aufgabe1#21-software-installieren) 
 bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter eingerichtet.
 
-Nun kommt noch eine Komponente hinzu. Installieren Sie bitte zusätzlich die 
+Nun kommt noch eine Komponente hinzu. Installieren Sie bitte zusätzlich
 
 - **Redis** (ein verbreiteter NOSQL Key-Value-Datastore)
 
@@ -34,7 +44,7 @@ Bei Problemen siehe Troubleshooting im
 
 ### 1.3. Python Umgebung installieren
 
-Wechseln Sie in das Verzeichnis des Repositories und installieren Sie die 
+Falls nicht schon geschehen, wechseln Sie in das Verzeichnis des Repositories und installieren Sie die 
 vorgegebenen Packages in eine virtuelle Umgebung für Python.
 
 ```
@@ -48,7 +58,7 @@ Wechseln Sie auf Ihrem Arbeitsrechner in das Unterverzeichnis dieser Aufgabe:
 
 ```
 $ cd vs2lab # angenommen hier liegt das vs2lab Repo
-$ cd Aufgabe2
+$ cd lab2
 ```
 
 ## Beispiele für RPC Kommunikation

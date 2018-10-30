@@ -42,7 +42,7 @@ $ git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
 ```
 
 Bei Problemen siehe Troubleshooting im 
-[VS2lab README](../README.md#252-troubleshooting)
+[VS2lab README](https://localhost:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
@@ -60,7 +60,7 @@ Wechseln Sie auf Ihrem Arbeitsrechner in das Unterverzeichnis dieser Aufgabe:
 
 ```
 $ cd vs2lab # angenommen hier liegt das vs2lab Repo
-$ cd Aufgabe1
+$ cd lab1
 ```
 
 ## 2 Einführung
@@ -165,19 +165,19 @@ ein neuer Browser Tab öffnet:
 - ``Client.ipynb``
 
 Führen Sie zunächst im Server Notebook alle Zellen bis zur letzten nacheinander 
-aus. Im Codeblock bleibt die Ausführung nach einer Logausgabe stehen (da der 
+aus. Im Codeblock bleibt die Ausführung nach einer Log-Ausgabe stehen (da der 
 Server blockierend auf eine Socket-Verbindung wartet).
 
 Führen Sie danach im Client Notebook alle Zellen bis zur letzten nacheinander 
 aus. Sie sehen das Ergebnis des Aufrufs im Client Notebook. Auch das Server 
-Notebook zeigt das Ende des Server Prozesses durch eine weitere Logausgabe.
+Notebook zeigt das Ende des Server Prozesses durch eine weitere Log-Ausgabe.
 
 #### 2.3.2. Client und Server in einem Notebook
 
 Öffnen Sie das Notebook ``Client-Server-Arch.ipynb`` und führen Sie alle Zellen 
 nacheinander aus.
 
-In dieser Variante sehen Sie die Nutzung eines Betriebssystemaufrufs zur 
+In dieser Variante sehen Sie die Nutzung eines Betriebssystem-Aufrufs zur 
 Erzeugung (Fork) eines neuen Prozesses. Dadurch können Client und Server 
 Ausführungen im gleichen Notebook deklariert werden. Das verteilte System 
 besteht am Ende durch den Fork trotzdem aus zwei Prozessen.
@@ -207,7 +207,7 @@ Prozess für die Benutzerschnittstelle und ein Prozess für den Telefonauskunft
 Dienst). Für den Kommunikationskanal verwenden Sie eine TCP Verbindung über 
 die Socket Schnittstelle.
 
-Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienstaufrufe vom 
+Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienst-Aufrufe vom 
 Benutzer als Python Funktionen aufgerufen werden können und wo die Ausgabe der 
 Ergebnisse erfolgt.
 
@@ -216,12 +216,12 @@ Notebook laufen. Die Schnittstelle des Telefonauskunft Dienst soll zwei
 Operationen bereitstellen:
 
 1. GET bekommt als Parameter einen Namen und sucht diesen in der 
-   Telefondatenbank. Das Ergebnis wird über den Socket an den Client 
+   Telefon-Datenbank. Das Ergebnis wird über den Socket an den Client 
    Prozess zurückgesendet.
-2. GETALL sendet alle Einträge der Telefondatenbank per Socket an den Client 
+2. GETALL sendet alle Einträge der Telefon-Datenbank per Socket an den Client 
    Prozess zurück.
 
-Die Telefondatenbank können Sie "In-Memory" als Python 
+Die Telefon-Datenbank können Sie "In-Memory" als Python 
 [Dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) 
 implementieren. Konzentrieren Sie sich auf den Entwurf und die Implementierung 
 eines Protokolls für den Telefonauskunft Dienst. Hierbei müssen Sie die 
@@ -232,7 +232,7 @@ und deren Abfolge festlegen.
 
 - Machen Sie die Schritte im Socket-Lebenszyklus durch **Log Ausgaben** in 
   Client und Server Prozess deutlich.
-- Schreiben Sie **Unit Tests** für die Dienstschnittstelle und die
+- Schreiben Sie **Unit Tests** für die Dienst-Schnittstelle und die
   Backend-Funktionen.
 - Erstellen Sie für die Nutzung Ihres Codes im Client und Server Prozess je 
   ein **Jupiter Notebook** mit kurzen Erläuterungen der Anwendungsschritte als
