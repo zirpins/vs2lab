@@ -45,7 +45,7 @@ Das Labor basiert auf **Python** und setzt (ab Aufgabe 2) eine **Redis** Install
 
 #### 2.2.1. Python
 
-Die Beispiele und Aufgaben sind weitgehend in Python 3 (~3.6) geschrieben.
+Die Beispiele und Aufgaben sind weitgehend in Python 3 (~3.7) geschrieben.
 
 [Python](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) ist eine pragmatische und weit verbreitete objektorientierte (u.a.) Skriptsprache mit dynamischer Typisierung.
 
@@ -67,6 +67,7 @@ Verwendete Module sind u.a.
 - socket ([low-level networking interface](https://docs.python.org/3/library/socket.html))
 - pickle ([python object serialization](https://docs.python.org/3/library/pickle.html))
 - logging ([logging facility for Python](https://docs.python.org/3/library/logging.html))
+- threading ([thread-based parallelism](https://docs.python.org/3/library/threading.html))
 
 Die Pakete müssen nicht separat installiert werden. Wir binden sie bei der Einrichtung der Python Umgebung ein (siehe unten).
 
