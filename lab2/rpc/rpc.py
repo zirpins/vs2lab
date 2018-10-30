@@ -2,6 +2,7 @@ import constRPC
 
 from context import lab_channel
 
+
 class DBList:
     def __init__(self, basic_list):
         self.value = list(basic_list)
@@ -20,6 +21,9 @@ class Client:
     def run(self):
         self.chan.bind(self.client)
         self.server = self.chan.subgroup('server')
+
+    def stop(self):
+        self.chan.leave('client')
 
     def append(self, data, db_list):
         assert isinstance(db_list, DBList)

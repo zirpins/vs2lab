@@ -110,13 +110,14 @@ Wir betrachten nun die Realisierung eines RPC Systems auf der Middleware-Ebene. 
 ```
 $ cd vs2lab/lab2/rpc
 $ ls -l
--rwxr-xr-x  1 zirpins  staff    32 Oct 25 20:11 constRPC.py
--rw-r--r--  1 zirpins  staff   385 Oct 30 09:38 context.py
--rwxr-xr-x  1 zirpins  staff  1784 Oct 26 13:24 rpc.py
--rw-r--r--  1 zirpins  staff   495 Oct 26 13:24 runrpc.py
+-rwxr-xr-x  1 zirpins  staff     22 Oct 30 20:16 constRPC.py
+-rw-r--r--  1 zirpins  staff    385 Oct 30 09:38 context.py
+-rwxr-xr-x  1 zirpins  staff   1840 Oct 30 20:22 rpc.py
+-rw-r--r--  1 zirpins  staff    225 Oct 30 20:22 runcl.py
+-rw-r--r--  1 zirpins  staff    269 Oct 30 20:16 runsrv.py
 ```
 
-Die RPC-Implementierung befindet sich in ``rpc.py`` mit Klassen für Client und Server Stubs. Die Stubs erstellen Nachrichten für Request sowie Reply und übertragen diese Nachrichten über einen Kommunikationskanal. 
+Die RPC-Implementierung befindet sich in ``rpc.py`` mit Klassen für Client und Server Stubs. Die Stubs erstellen Nachrichten für Request sowie Reply und übertragen diese Nachrichten über einen Kommunikationskanal.
 
 #### 2.2.1. Kommunikation per `lab_channel`
 
@@ -135,21 +136,18 @@ $ ls -l
 
 Zum Ausprobieren starten Sie erst Redis, dann den Server und schließlich den Client.
 
-1. Terminal:
-
+- Terminal 1:
 ```
 $ redis-server
 ```
 
-2. Terminal:
-
+- Terminal 2:
 ```
 $ cd vs2lab/lab2/channel
 $ pipenv python runcl.py
 ```
 
-3. Terminal:
-
+- Terminal 3:
 ```
 $ cd vs2lab/lab2/channel
 $ pipenv python runsrv.py
@@ -159,14 +157,19 @@ $ pipenv python runsrv.py
 
 Nun können wir noch das eigentliche RPC-Beispiel ausprobieren. Falls Sie den Redis-Server im Channel-Beispiel gestartet haben, können Sie diesen weiter verwenden, sonst starten Sie den Server jetzt (siehe oben).
 
-Nun können Sie das RPC-System starten:
+Client- und Server-Prozesse werden durch `runcl.py` und `runsrv.py` realisiert. Die Prozesse verwenden die in `rpc.py` bereitgestellten Stubs. Sie werden wie üblich in getrennten Terminals gestartet:
 
+- Terminal 1:
 ```
 $ cd vs2lab/lab2/rpc
-$ pipenv python runrpc.py
+$ pipenv python runsrv.py
 ```
 
-In diesem Beispiel werden Client und Server Prozesse aus einem Skript erzeugt.
+- Terminal 2:
+```
+$ cd vs2lab/lab2/rpc
+$ pipenv python runcl.py
+```
 
 ## 3 Aufgabe
 
