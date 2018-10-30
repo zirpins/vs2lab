@@ -244,5 +244,4 @@ und deren Abfolge festlegen.
 
 ### 3.4 Abgabe
 
-Die Abgabe erfolgt durch Präsentation bei einem Dozenten. Packen Sie den 
-kompletten Code zudem als Zip Archiv und laden Sie dieses im ILIAS hoch.
+Die Abgabe erfolgt durch Präsentation bei einem Dozenten. Packen Sie den kompletten Code zudem als Zip Archiv und laden Sie dieses im ILIAS hoch.

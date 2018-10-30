@@ -1,19 +1,20 @@
 import logging
 from typing import List, Any
 
+import constRPYC
 import rpyc
 from rpyc.utils.server import ForkingServer
 
-import constRPYC
 from context import lab_logging
 
 lab_logging.setup()
-logger = logging.getLogger("vs2lab.b13_rpyc.server")
+logger = logging.getLogger("vs2lab.lab2.rpyc.server")
 
 
 class DBList(rpyc.Service):
-    value: List[Any] = []
+    value: List[Any] = [] # not visible from remote
 
+    # visible functions start with 'exposed_'
     def exposed_append(self, data):
         self.value = self.value + [data]
         return self.value

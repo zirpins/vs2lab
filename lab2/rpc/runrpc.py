@@ -1,5 +1,5 @@
 import os
-import rpc1
+import rpc
 from context import lab_channel, lab_logging
 import logging
 
@@ -10,8 +10,8 @@ chan = lab_channel.Channel()
 chan.channel.flushall()
 logger.info('Flushed all redis keys.')
 
-srv = rpc1.Server()
-cl = rpc1.Client()
+srv = rpc.Server()
+cl = rpc.Client()
 
 pid = os.fork()
 if pid == 0:
@@ -19,7 +19,7 @@ if pid == 0:
     os._exit(0)
 
 cl.run()
-base_list = rpc1.DBList({'foo'})
+base_list = rpc.DBList({'foo'})
 result_list = cl.append('bar', base_list)
 
 print("Result: {}".format(result_list.value))

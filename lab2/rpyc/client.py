@@ -1,24 +1,24 @@
 import logging
 
+import constRPYC
 import rpyc
 
-import constRPYC
 from context import lab_logging
 
 lab_logging.setup()
+logger = logging.getLogger("vs2lab.lab2.rpyc.Client")
 
+conn = rpyc.connect(constRPYC.SERVER, constRPYC.PORT)  # Connect to the server
+logger.info("Connected.")
 
-class Client:
-    logger = logging.getLogger("vs2lab.b13_rpyc.Client")
+# the exposed service lives in conn.root
+dblist = conn.root
 
-    conn = rpyc.connect(constRPYC.SERVER, constRPYC.PORT)  # Connect to the server
-    logger.info("Connected.")
+ret = dblist.append(2)  # Call an exposed operation,
+logger.info("Append 2: '{}'".format(str(ret)))
 
-    ret = conn.root.exposed_append(2)  # Call an exposed operation,
-    logger.info("Append 2: '{}'".format(str(ret)))
+ret = dblist.append(4)  # and append two elements
+logger.info("Append 4: '{}'".format(str(ret)))
 
-    ret = conn.root.exposed_append(4)  # and append two elements
-    logger.info("Append 4: '{}'".format(str(ret)))
-
-    ret = conn.root.exposed_value()  # Print the result
-    logger.info("Stored value: '{}'".format(str(ret)))
+ret = dblist.value()  # Print the result
+logger.info("Stored value: '{}'".format(str(ret)))
