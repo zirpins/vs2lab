@@ -40,7 +40,7 @@ $ git pull
 ```
 
 Bei Problemen siehe Troubleshooting im 
-[VS2lab README](https://localhost:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
+[VS2lab README](https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
