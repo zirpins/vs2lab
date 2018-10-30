@@ -13,7 +13,7 @@ Allgemein **Ziele** dieses Labors:
 ## 1. Vorbereitung
 ### 1.1. Software installieren
 
-Sie haben in [Aufgabe 1](https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab/tree/master/Aufgabe1#21-software-installieren) 
+Sie haben in [Aufgabe 1](https://iwi-i-gitlab-1.hs-karlsruhe.de:2443/zich0001/vs2lab/blob/master/lab1/README.md#1-vorbereitung) 
 bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter eingerichtet.
 
 Nun kommt noch eine Komponente hinzu. Installieren Sie bitte zusätzlich
@@ -40,7 +40,7 @@ $ git pull
 ```
 
 Bei Problemen siehe Troubleshooting im 
-[VS2lab README](https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
+[VS2lab README](https://iwi-i-gitlab-1.hs-karlsruhe.de:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
