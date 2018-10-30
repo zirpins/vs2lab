@@ -202,7 +202,8 @@ Die threading API ist hier dokumentiert:
 
 ### 3.2 Aufgabe und Anforderungen kurz und knapp
 
-- Erweitern Sie Client- und Server-Klassen so, dass sie den Ablauf eines asynchronen RPC realisieren.
+- Erweitern Sie Client- und Server-Klassen des RPC-Beispiels in `rpc.py`so, dass sie den Ablauf eines asynchronen RPC realisieren.
+- Passen Sie auch die dazugehörigen Client- und Server-Skripte `runcl.py` und `runsrv.py` entsprechend an.
 - Die schon vorhandenen Append-Funktion kann beibehalten werden, nur eben asynchron.
 - Pausieren Sie den Server nach der Bestätigung des Requests für 10 Sekunden, um eine lange Ausführungszeit zu simulieren.
 - Verwenden Sie im Client einen Thread zum Warten und Reagieren auf Server-Antworten.
