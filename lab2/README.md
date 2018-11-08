@@ -67,7 +67,11 @@ Das Labor beginnt mit zwei Beispielen zur RPC Kommunikation.
 
 ### 2.1. Anwendung von RPCs auf *Sprachebene* mit dem **rpyc** Framework
 
-Zunächst wollen wir ein 'echtes' RPC Framework benutzen. Das Beispiel finden sie hier:
+Zunächst wollen wir ein 'echtes' RPC Framework benutzen. Das Beispiel dient zur Veranschaulichung von RPCs auf der Sprachebene, die die Kommunikation in verteilten Systemen fast komplett verstecken und sehr einfach benutzbar machen. 
+
+Sie können das Beispiel ausprobieren und bei Interesse damit experimentieren. Für die spätere Programmieraufgabe wird es nicht gebraucht.
+
+Das Beispiel finden Sie hier:
 
 ```
 $ cd vs2lab/lab2/rpyc
