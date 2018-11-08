@@ -92,14 +92,14 @@ Zum Ausprobieren starten Sie erst den Server und dann den Client.
 
 ```
 $ cd vs2lab/lab2/rpyc
-$ pipenv python server.py
+$ pipenv run python server.py
 ```
 
 In anderem Terminal:
 
 ```
 $ cd vs2lab/lab2/rpyc
-$ pipenv python client.py
+$ pipenv run python client.py
 ```
 
 Detaillierte Informationen zu RPyC finden Sie hier:
@@ -148,13 +148,13 @@ $ redis-server
 - Terminal 2:
 ```
 $ cd vs2lab/lab2/channel
-$ pipenv python runcl.py
+$ pipenv run python runcl.py
 ```
 
 - Terminal 3:
 ```
 $ cd vs2lab/lab2/channel
-$ pipenv python runsrv.py
+$ pipenv run python runsrv.py
 ```
 
 #### 2.2.2. Zurück zum RPC-Beispiel
@@ -166,13 +166,13 @@ Client- und Server-Prozesse werden durch `runcl.py` und `runsrv.py` realisiert. 
 - Terminal 1:
 ```
 $ cd vs2lab/lab2/rpc
-$ pipenv python runsrv.py
+$ pipenv run python runsrv.py
 ```
 
 - Terminal 2:
 ```
 $ cd vs2lab/lab2/rpc
-$ pipenv python runcl.py
+$ pipenv run python runcl.py
 ```
 
 ## 3 Aufgabe
@@ -195,7 +195,7 @@ Threads werden in Python durch das `threading` Modul realisiert. Das Skript `vs2
 
 ```
 $ cd vs2lab/lab2/threading
-$ pipenv python async_zip.py.py
+$ pipenv run python async_zip.py.py
 ```
 
 Python Threads erlauben zwar keine echte Parallelität der Ausführung, sind aber gerade bei blockierenden I/O-Aufrufen sehr nützlich, da Sie die abwechselnde Ausführung von I/O- und weiteren Anweisungen ohne Wartezeit erlauben.
