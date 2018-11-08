@@ -8,25 +8,31 @@ lab_logging.setup()  # init loging channels for the lab
 
 
 class Server:
-    logger = logging.getLogger("vs2lab.a1_layers.clientserver.Server")
+    _logger = logging.getLogger("vs2lab.lab1.clientserver.Server")
+    _serving = True
 
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind((constCS.HOST, constCS.PORT))
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # prevents errors due to "addresses in use"
-        self.logger.info("Server bound to socket " + str(self.sock))
+        self.sock.settimeout(3)  # time out in order not to block forever
+        self._logger.info("Server bound to socket " + str(self.sock))
 
     def serve(self):
         self.sock.listen(1)
-        (connection, address) = self.sock.accept()  # returns new socket and address of client
-        while True:  # forever
-            data = connection.recv(1024)  # receive data from client
-            if not data:
-                break  # stop if client stopped
-            connection.send(data + "*".encode('ascii'))  # return sent data plus an "*"
-        connection.close()  # close the connection
+        while self._serving:  # as long as _serving (checked after connections or socket timeouts)
+            try:
+                (connection, address) = self.sock.accept()  # returns new socket and address of client
+                while True:  # forever
+                    data = connection.recv(1024)  # receive data from client
+                    if not data:
+                        break  # stop if client stopped
+                    connection.send(data + "*".encode('ascii'))  # return sent data plus an "*"
+                connection.close()  # close the connection
+            except socket.timeout:
+                pass  # ignore timeouts
         self.sock.close()
-        self.logger.info("Server down.")
+        self._logger.info("Server down.")
 
 
 class Client:
@@ -45,3 +51,6 @@ class Client:
         self.sock.close()  # close the connection
         self.logger.info("Client down.")
         return msg_out
+
+    def close(self):
+        self.sock.close()

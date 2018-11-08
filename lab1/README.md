@@ -174,6 +174,8 @@ Notebook zeigt das Ende des Server Prozesses durch eine weitere Log-Ausgabe.
 
 #### 2.3.2. Client und Server in einem Notebook
 
+ACHTUNG: diese Variante funktioniert nicht unter Windows. Falls Sie Windows verwenden, überspringen Sie dieses Beispiel.
+
 Öffnen Sie das Notebook ``Client-Server-Arch.ipynb`` und führen Sie alle Zellen 
 nacheinander aus.
 
@@ -194,6 +196,8 @@ folgt aus:
 $ cd vs2lab/Aufgabe1
 $ pipenv run python clientserver_test.py
 ```
+
+Im Test wird ein Tread für die Ausführung des Servers verwendet. Näheres dazu folgt im nächsten Labor.
 
 ## 3 Aufgabe
 
