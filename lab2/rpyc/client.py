@@ -5,7 +5,7 @@ import rpyc
 
 from context import lab_logging
 
-lab_logging.setup()
+lab_logging.setup(stream_level=logging.INFO)
 logger = logging.getLogger("vs2lab.lab2.rpyc.Client")
 
 conn = rpyc.connect(constRPYC.SERVER, constRPYC.PORT)  # Connect to the server

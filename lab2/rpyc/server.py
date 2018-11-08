@@ -3,7 +3,7 @@ from typing import List, Any
 
 import constRPYC
 import rpyc
-from rpyc.utils.server import ForkingServer
+from rpyc.utils.server import ThreadedServer
 
 from context import lab_logging
 
@@ -24,6 +24,6 @@ class DBList(rpyc.Service):
 
 
 if __name__ == "__main__":
-    server = ForkingServer(DBList, port=constRPYC.PORT)
+    server = ThreadedServer(DBList, port=constRPYC.PORT)
     logger.info("Server starting...")
     server.start()
