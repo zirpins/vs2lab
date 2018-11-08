@@ -45,7 +45,7 @@ Das Labor basiert auf **Python** und setzt (ab Aufgabe 2) eine **Redis** Install
 
 #### 2.2.1. Python
 
-Die Beispiele und Aufgaben sind weitgehend in Python 3 (~3.7) geschrieben.
+Die Beispiele und Aufgaben sind weitgehend in Python 3 (~3.6) geschrieben.
 
 [Python](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) ist eine pragmatische und weit verbreitete objektorientierte (u.a.) Skriptsprache mit dynamischer Typisierung.
 
