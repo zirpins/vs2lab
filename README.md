@@ -35,7 +35,7 @@ Das Labor nutzt die Git Versionsverwaltung und den GitLab Dienst zur Bereitstell
 
 Wenn ``git`` vorhanden ist, dann kopieren Sie das Labor Repository wie folgt (aus dem lokalen Netz der Hochschule oder über VPN):
 
-```
+```bash
 git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
 ```
 
@@ -83,13 +83,13 @@ Redis muss zunächst installiert werden:
 
 Das Labor braucht für viele Teile eine laufende Redis Instanz. Der Redis Server wird wie folgt gestartet:
 
-```
-$ redis-server
+```bash
+redis-server
 ```
 
 Redis besitzt ein [Command Line Interface (CLI)](https://en.wikipedia.org/wiki/Command-line_interface) zur interaktiven Benutzung. In einer weiteren Shell kann damit der Redis Server beobachtet werden:
 
-```
+```bash
 $ redis-cli
 127.0.0.1:6379> monitor
 OK
@@ -118,9 +118,9 @@ Das Laborprojekt verwendet auch ``virtualenv`` nicht direkt. Stattdessen wurde `
 
 ``pipenv`` erstellt bei der Nutzung eine Liste mit verwendeten Modulen (``Pipfile``, bzw. ``Pipfile.lock``),  die z.B. im Git Repository gut geteilt werden kann. Die Module dieser Liste können mit ``pipenv`` automatisch installiert werden. Dadurch kann man die Module des Labors auf dem eigenen Rechner mit nur einem Befehl installieren:
 
-```
-$ cd vs2lab # angenommen hier liegt das vs2lab Repo
-$ pipenv install
+```bash
+cd vs2lab # angenommen hier liegt das vs2lab Repo
+pipenv install
 ```
  
 Bei Bedarf können Details in den ``pipenv`` Docs nachgelesen werden:
@@ -162,9 +162,9 @@ Im Labor nutzen wir teilweise Jupyter Notebooks zur Erklärung der Beispiele ode
 
 Jupyter wird im VS2Lab Repository automatisch installiert, wenn per ``pipenv install`` die Abhängigkeiten installiert werden. Sie starten den Jupyter notebook Server wie folgt:
 
-```
-$ cd vs2lab # angenommen hier liegt das vs2lab Repo
-$ pipenv run jupiter notebook
+```bash
+cd vs2lab # angenommen hier liegt das vs2lab Repo
+pipenv run jupiter notebook
 ```
 
 Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öffnen. Stoppen Sie den Server bei Bedarf mit ``ctrl-c``.
@@ -185,8 +185,8 @@ Anaconda vereinfacht die Installation und beinhaltet z.B. schon die *Spyder IDE*
 
 -  Bei Problemen mit dem selbst-signierten SSL Zertifikat des GitLab Servers kann dessen Verifikation wie folgt umgangen werden:
 
-```
-$ git -c http.sslVerify=false clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
+```bash
+git -c http.sslVerify=false clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
 ```
 
 - Bei Problemen mit der HTTPS Verbindung kann das Repository auch per ``ssh`` 'gecloned' werden. Hierzu benötigen Sie ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel hinterlegen. Bitte wenden Sie sich dazu bei Bedarf an einen Dozenten.

@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/lab2/threading" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lab2/channel" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Aufgabe1" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lab1" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

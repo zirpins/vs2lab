@@ -284,3 +284,4 @@ $RECYCLE.BIN/
 
 Pipfile.lock
 *.zip
+.vscode/
