@@ -12,6 +12,7 @@ jupyter = "*"
 ipyparallel = "*"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3"
