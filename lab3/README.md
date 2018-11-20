@@ -22,7 +22,7 @@ Allgemeine **Ziele** dieses Labors:
 
 Für diese Aufgabe werden keine neuen Installationen benötigt.
 
-### 1.2. Projekt clonen und/oder aktualisieren
+### 1.2. Projekt aktualisieren
 
 Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus
 dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
@@ -37,8 +37,7 @@ git pull # aktualisieren
 
 ### 1.3. Python Umgebung installieren
 
-Hier hat sich nichts geändert. Ggf. aktualisieren wie folgt (Beispiel für
-Linux/Mac)
+Hier hat sich nichts geändert. Ggf. aktualisieren wie folgt:
 
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
