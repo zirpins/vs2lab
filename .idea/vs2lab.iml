@@ -8,8 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/lab2/threading" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lab2/channel" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Aufgabe1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab4/chord" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Pipenv (vs2lab)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
