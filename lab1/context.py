@@ -1,3 +1,8 @@
+"""
+Utility script expanding the module search path
+This way we can import modules from the shared lib package
+"""
+
 import os
 import sys
 
@@ -12,7 +17,6 @@ def add_parent_path(steps_up=1):
 
 
 # Add the toplevel folder of the repository to the module search path
-# This way we can import modules from the shared lib package
 add_parent_path()
 
 # following imports are used by other modules to access shared packages
