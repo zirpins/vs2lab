@@ -56,9 +56,9 @@ cd lab4/chord
 ## 2. Beispiel: Implementierung von Chord Ring Knoten
 
 Als Startpunkt des Labors dient eine Implementierung von Chord Knoten im
-Verzeichnis `vs2lab/lab4/chord`. Hier sind zwei Skripte interessant: 
+Verzeichnis `vs2lab/lab4/chord`. Hier sind zwei Skripte interessant:
 
-- `chordnode.py` ist die eigentliche Implementierung der Knoten. 
+- `chordnode.py` ist die eigentliche Implementierung der Knoten.
 - `doit.py` organisiert mehrere Knoten als P2P Anwendung
 
 ### Chord Knoten `chordnode.py`
@@ -116,7 +116,7 @@ unter Windows.
 
 Der verwendete `DummyChordClient` ist nur eine Schablone ohne Logik für den
 Aufruf einer Namensauflösung auf einem der Knoten. Dieser Client soll in der
-Programmieraufgabe fertiggestellt werden. 
+Programmieraufgabe fertiggestellt werden.
 
 ### Starten des Systems
 
@@ -140,7 +140,7 @@ fertiggestellt werden.
 
 Die Namensauflösung mit Chord erfolgt schrittweise über eine Reihe von Aufrufen
 der LOOKUP Funktion einzelner Knoten, die jeweils den besten bekannten Knoten
-auf dem Weg zum Ziel liefern, bis dieses Ziel am Ende erreicht ist. 
+auf dem Weg zum Ziel liefern, bis dieses Ziel am Ende erreicht ist.
 
 Die Steuerung der einzelnen Schritte kann entweder durch einen zentralen Client
 Prozess von außen (iterativ) koordiniert werden oder sich durch die verteilen
@@ -155,7 +155,7 @@ rekursive Variante implementieren.
   `LOOKUP` Anfrage an den besten bekannten Knoten machen usw.
 - Erweitern Sie ebenfalls die Klasse `DummyChordClient`. Hier soll eine `LOOKUP`
   Anfrage nach einem zufälligen validen Schlüssel an einen ebenfalls zufälligen
-  existierenden Knoten erfolgen und der gefundene Name ausgegeben werden. 
+  existierenden Knoten erfolgen und der gefundene Name ausgegeben werden.
 
 ### 3.3 Tipps
 
