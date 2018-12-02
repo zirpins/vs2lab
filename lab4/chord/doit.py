@@ -7,14 +7,13 @@ Chord Application
 - multiprocessing should work on unix and windows
 """
 
-import time
 import logging
 import sys
+import time
 from multiprocessing import Process
 
 import chordnode as chord_node
 import constChord
-
 from context import lab_channel, lab_logging
 
 lab_logging.setup(stream_level=logging.INFO)
@@ -34,7 +33,8 @@ if __name__ == "__main__":  # if script is started from command line
 
 
     class DummyChordClient:
-        """A dummy client template with the channel boilerplate code"""
+        """A dummy client template with the channel boilerplate"""
+
         def __init__(self, channel):
             self.channel = channel
             self.node_id = channel.join('client')
@@ -43,9 +43,9 @@ if __name__ == "__main__":  # if script is started from command line
             self.channel.bind(self.node_id)
             print("Implement me pls...")
             chan.send_to(  # a final multicast
-                [i.decode()
-                     for i in list(self.channel.channel.smembers('node'))],                
+                {i.decode() for i in list(self.channel.channel.smembers('node'))},
                 constChord.STOP)
+
 
     # Init n chord nodes and a clint
     nodes = [chord_node.ChordNode(chan) for i in range(n)]
@@ -55,15 +55,15 @@ if __name__ == "__main__":  # if script is started from command line
     children = []
     for i in range(n):
         nodeproc = Process(
-            target=lambda n: n.run(),
-            name="ChordNode-"+str(i),
+            target=lambda o: o.run(),
+            name="ChordNode-" + str(i),
             args=(nodes[i],))
         children.append(nodeproc)
         nodeproc.start()
         time.sleep(0.25)
 
     clientproc = Process(
-        target=lambda c: c.run(),
+        target=lambda o: o.run(),
         name="ChordClient",
         args=(client,))
 
