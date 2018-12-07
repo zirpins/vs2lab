@@ -249,7 +249,7 @@ class Channel:
         :param timeout: optional timeout for blocking call
         :return:
         """
-        assert (type(k) is str for k in sender_set), ''
+        assert (type(k) is str for k in sender_set), 'Address type mismatch.'
 
         # lookup member id by pid and validate it
         caller: str = self.os_members[os.getpid()]

@@ -10,7 +10,7 @@ Chord Application
 import logging
 import sys
 import time
-from multiprocessing import Process
+import multiprocessing as mp
 
 import chordnode as chord_node
 import constChord
@@ -18,59 +18,80 @@ from context import lab_channel, lab_logging
 
 lab_logging.setup(stream_level=logging.INFO)
 
+
+class DummyChordClient:
+    """A dummy client template with the channel boilerplate"""
+
+    def __init__(self, channel):
+        self.channel = channel
+        self.node_id = channel.join('client')
+
+    def enter(self):
+        self.channel.bind(self.node_id)
+
+    def run(self):
+        print("Implement me pls...")
+        self.channel.send_to(  # a final multicast
+            {i.decode() for i in list(self.channel.channel.smembers('node'))},
+            constChord.STOP)
+
+
+def create_and_run(num_bits, node_class, enter_bar, run_bar):
+    """
+    Create and run a node (server or client role)
+    :param num_bits: address range of the channel
+    :param node_class: class of node
+    :param enter_bar: barrier syncing channel population 
+    :param run_bar: barrier syncing node creation
+    """
+    chan = lab_channel.Channel(n_bits=num_bits)
+    node = node_class(chan)
+    enter_bar.wait()
+    node.enter()
+    run_bar.wait()
+    node.run()
+
+
 if __name__ == "__main__":  # if script is started from command line
     m = 6  # Number of bits for linear names
-    n = 16  # Number of nodes in the chord ring
+    n = 8  # Number of nodes in the chord ring
 
     # Check for command line parameters m, n.
     if len(sys.argv) > 2:
         m = int(sys.argv[1])
         n = int(sys.argv[2])
 
-    # Create a communication channel.,.  ö,
-    chan = lab_channel.Channel(n_bits=m)
+    # Flush communication channel
+    chan = lab_channel.Channel()
     chan.channel.flushall()
 
+    # we need to spawn processes for support of windows
+    mp.set_start_method('spawn')
 
-    class DummyChordClient:
-        """A dummy client template with the channel boilerplate"""
-
-        def __init__(self, channel):
-            self.channel = channel
-            self.node_id = channel.join('client')
-
-        def run(self):
-            self.channel.bind(self.node_id)
-            print("Implement me pls...")
-            chan.send_to(  # a final multicast
-                {i.decode() for i in list(self.channel.channel.smembers('node'))},
-                constChord.STOP)
-
-
-    # Init n chord nodes and a clint
-    nodes = [chord_node.ChordNode(chan) for i in range(n)]
-    client = DummyChordClient(chan)
+    # create barriers to synchonize bootstrapping
+    bar1 = mp.Barrier(n+1)  # Wait for channel population to complete
+    bar2 = mp.Barrier(n+1)  # Wait for ring construction to complete
 
     # start n chord nodes in separate processes
     children = []
     for i in range(n):
-        nodeproc = Process(
-            target=lambda o: o.run(),
+        nodeproc = mp.Process(
+            target=create_and_run,
             name="ChordNode-" + str(i),
-            args=(nodes[i],))
+            args=(m, chord_node.ChordNode, bar1, bar2))
         children.append(nodeproc)
         nodeproc.start()
-        time.sleep(0.25)
 
-    clientproc = Process(
-        target=lambda o: o.run(),
+    time.sleep(0.25)
+
+    # spawn client proc and wait for it to finish
+    clientproc = mp.Process(
+        target=create_and_run,
         name="ChordClient",
-        args=(client,))
-
-    # start client and wait for it to finish
+        args=(m, DummyChordClient, bar1, bar2))
     clientproc.start()
     clientproc.join()
 
-    # wait for nodes to finish
+    # wait for node procs to finish
     for nodeproc in children:
         nodeproc.join()

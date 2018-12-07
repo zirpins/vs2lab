@@ -111,7 +111,7 @@ class ChordNode:
             if self.in_between(key, self.finger_table[i], self.finger_table[(i + 1) % self.n_bits]):
                 return self.finger_table[i]  # key in [FT[i],FT[i+1])
 
-    def run(self):
+    def enter(self):
         self.channel.bind(str(self.node_id))  # bind current pid
         self.add_node(self.node_id)
 
@@ -128,8 +128,8 @@ class ChordNode:
 
         self.logger.info("ChordNode {:04n} ready.".format(self.node_id))
 
-        # Start node operation loop
-        while True:
+    def run(self):
+        while True:  # Start node operation loop
             message = self.channel.receive_from_any()  # Wait for any request
             sender: str = message[0]  # Identify the sender
             request = message[1]  # And the actual request
