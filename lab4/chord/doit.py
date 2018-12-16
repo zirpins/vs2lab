@@ -9,7 +9,6 @@ Chord Application
 
 import logging
 import sys
-import time
 import multiprocessing as mp
 
 import chordnode as chord_node
@@ -46,10 +45,10 @@ def create_and_run(num_bits, node_class, enter_bar, run_bar):
     """
     chan = lab_channel.Channel(n_bits=num_bits)
     node = node_class(chan)
-    enter_bar.wait()
-    node.enter()
-    run_bar.wait()
-    node.run()
+    enter_bar.wait()  # wait for all nodes to join the channel
+    node.enter()  # do what is needed to enter the ring
+    run_bar.wait()  # wait for all nodes to finish entering
+    node.run()  # start operating the node
 
 
 if __name__ == "__main__":  # if script is started from command line
@@ -81,8 +80,6 @@ if __name__ == "__main__":  # if script is started from command line
             args=(m, chord_node.ChordNode, bar1, bar2))
         children.append(nodeproc)
         nodeproc.start()
-
-    time.sleep(0.25)
 
     # spawn client proc and wait for it to finish
     clientproc = mp.Process(
