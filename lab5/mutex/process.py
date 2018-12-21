@@ -118,12 +118,10 @@ class Process:
 
     def run(self):
         while True:
-            # Try to enter critical section if this process is first in list.
-            # Occasionally try to enter if not first in list.
-            # Only do that if there are any other processes left.
-            if self.process_id != self.all_processes[-1] and \
-                    (self.process_id == self.all_processes[0] or \
-                        random.choice([True, False])):
+            # Enter the critical section if there are more than one processes left
+            # and random is true
+            if len(self.all_processes) > 1 and \
+                        random.choice([True, False]):
                 self.logger.debug("Process {} wants to ENTER CS at CLOCK {}.".format(self.process_id, self.clock))
                 self.__request_to_enter()
                 while not self.__allowed_to_enter():
