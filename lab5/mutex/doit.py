@@ -32,14 +32,14 @@ def create_and_run(num_bits, proc_class, enter_bar, run_bar):
     chan = lab_channel.Channel(n_bits=num_bits)
     proc = proc_class(chan)
     enter_bar.wait()  # wait for all peers to join the channel
-    proc.enter()  # do some bootstrapping
+    proc.init()  # do some bootstrapping
     run_bar.wait()  # wait for all nodes to finish
     proc.run()  # start operating
 
 
 if __name__ == "__main__":  # if script is started from command line
     m = 8  # Number of bits for process ids
-    n = 3  # Number of processes in the group
+    n = 4  # Number of processes in the group
 
     # Check for command line parameters m, n.
     if len(sys.argv) > 2:
