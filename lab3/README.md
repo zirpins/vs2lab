@@ -1,4 +1,4 @@
-# Labor 3 Kommunikation über Nachrichten mit ZeroMQ
+# **Labor 3** - Kommunikation über Nachrichten mit ZeroMQ
 
 Im dritten Labor untersuchen wir eine konkrete Technik der
 *Nachrichtenkommunikation*. Dabei werden zunächst drei Beispiele der wichtigsten
@@ -31,7 +31,7 @@ dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git add . # ggf. eigene Änderungen vormerken
 git commit -m 'update' # ggf eigene Änderungen per Commit festschreiben
-git checkout master # branch auswählen (falls nicht sowie schon aktiv)
+git checkout master # branch auswählen (falls nicht schon aktiv)
 git pull # aktualisieren
 ```
 

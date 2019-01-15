@@ -1,4 +1,4 @@
-# Labor 1 Mehrschicht Architekturen mit Sockets
+# **Labor 1** - Mehrschicht Architekturen mit Sockets
 
 Im ersten Labor konstruieren wir ein einfaches Client-Server System mit
 low-level **Sockets** und lernen dabei eine Menge über die Sprache **Python**

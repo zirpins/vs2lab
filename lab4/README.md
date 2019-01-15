@@ -1,4 +1,4 @@
-# Labor 4 Namensauflösung im Chord P2P-System
+# **Labor 4** - Namensauflösung im Chord P2P-System
 
 Das Thema im 4. Labor ist die Auflösung linearer Namen. Wir betrachten dazu die
 Systemklasse *verteilter Hash-Tabellen* (Distributed Hash Table - DHT) und
@@ -31,7 +31,7 @@ dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git add . # ggf. eigene Änderungen vormerken
 git commit -m 'update' # ggf eigene Änderungen per Commit festschreiben
-git checkout master # branch auswählen (falls nicht sowie schon aktiv)
+git checkout master # branch auswählen (falls nicht schon aktiv)
 git pull # aktualisieren
 ```
 

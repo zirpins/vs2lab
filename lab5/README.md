@@ -1,4 +1,4 @@
-# Labor 5 Mutex-Koordination mit logischen Lamport Uhren
+# **Labor 5** -  Mutex-Koordination mit logischen Lamport Uhren
 
 Im fünften Labor steht die Koordination von Prozessen im Mittelpunkt. Konkret
 wird ein Algorithmus für den wechselseitigen Ausschluss (engl. *Mutual
@@ -36,7 +36,7 @@ dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git add . # ggf. eigene Änderungen vormerken
 git commit -m 'update' # ggf eigene Änderungen per Commit festschreiben
-git checkout master # branch auswählen (falls nicht sowie schon aktiv)
+git checkout master # branch auswählen (falls nicht schon aktiv)
 git pull # aktualisieren
 ```
 
@@ -62,7 +62,7 @@ cd lab5/mutex
 
 Als Startpunkt des Labors dient die Implementierung von konkurierenden Peer
 Prozessen eines Systems mit wechselseitigem Ausschluss im Verzeichnis
-`vs2lab/lab4/chord`. Hier sind zwei Skripte interessant:
+`vs2lab/lab5/mutex`. Hier sind zwei Skripte interessant:
 
 - `process.py` ist die eigentliche Implementierung der Peers
 - `doit.py` organisiert mehrere Peers als Mutex Anwendung
@@ -88,7 +88,7 @@ Die genaue Funktion entnehmen Sie bitte der kommentierten Implementierung.
 
 Das zweite Skript nutzt die Implementierung von Peer Prozessen zum Aufbau eines
 Mutex Systems mit simuliertem Knotenausfall. Hierbei kann die Anzahl der Knoten
-(`n`) als Konstante oder Parameter angegeben werden.
+(`n`) als Konstante angegeben werden.
 
 Das Skript verwendet wieder das [Python `multiprocessing`
 Modul](https://docs.python.org/3.7/library/multiprocessing.html), um Knoten als
@@ -121,8 +121,8 @@ Sie sollen nun den Mutex Algorithmus erweitern.
 Aktuell kann der Algorithmus nicht mit Absturz Ausfällen umgehen. Das System
 bleibt nach dem Ausfall eines Knotens nach kurzer Zeit stehen.
 
-Die Aufgabe besteht in der Erweiterung des Mutex Algorithmus zur Kaschierung von
-Abstürzen. Das System soll trotz des simulierten Ausfalls eines Prozesses
+Die Aufgabe besteht in der Erweiterung des Mutex Algorithmus zur Maskierung von
+Absturzausfällen. Das System soll trotz des simulierten Ausfalls eines Prozesses
 kontinuierlich weiterarbeiten.
 
 ## 3.2 Aufgabe und Anforderungen kurz und knapp

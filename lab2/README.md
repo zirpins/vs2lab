@@ -1,4 +1,4 @@
-# Labor 2 Kommunikation per Remote Procedure Call (RPC)
+# **Labor 2** - Kommunikation per Remote Procedure Call (RPC)
 
 Das zweite Labor beschäftigt sich hauptsächlich mit **RPC-Kommunikation** in
 verschiedenen Varianten. Ein erstes Beispiel zeigt eine einfache
