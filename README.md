@@ -6,35 +6,35 @@ Softwaresysteme sowie zur Einführung in deren softwaretechnische Konstruktion.
 ## 1. Vorgehen
 
 Die Laborthemen orientieren sich an der inhaltlichen Struktur der Vorlesung VS2.
-Die Laborarbeit beinhaltet zunächst die Analyse gegebener Beispiele für einzelne
-Themenbereiche. Basierend darauf werden eigenständige Lösungen entwickelt.
+Die Laborarbeit beinhaltet zunächst jeweils die Analyse gegebener Beispiele für
+einzelne Themenbereiche. Basierend darauf werden eigenständige Lösungen
+entwickelt.
 
-Neben den Pflichtaufgaben kann durch Bearbeitung einer Zusatzaufgabe ein Bonus
-für die Modulklausur erworben werden.
+Neben den Pflichtaufgaben (1-5) kann durch Bearbeitung der Zusatzaufgabe (6) ein
+Bonus für die Modulklausur erworben werden.
 
-Laboraufgaben können in kleinen Teams bis maximal 3 Personen bearbeitet werden.
-Die Abnahme erfolgt bei den Betreuern im Kurs (grundsätzlich nur für anwesende
-Teammitglieder) und per Upload im ILIAS.
+Die Abgabe der Teilaufgaben erfolgt im [ILIAS Kurs 'Verteilte Systeme 2
+Labor'](https://ilias.hs-karlsruhe.de/goto.php?target=crs_307307). Dort sind
+auch die genauen Regelungen der Abgabe zu finden.
 
 ---
 
-**Hinweis**: Das Labor Repository ist zur Zeit nicht vollständig und wird über
-das Semester laufend aktualisiert. Es empfiehlt sich daher, das Labor als Git
-Repository zu belassen und regelmäßig per ``$ git pull`` aktuell zu halten.
+**Hinweis**: Das Labor Repository wird laufend weiterentwickelt und
+aktualisiert. Es empfiehlt sich daher, das Labor als Git Repository zu belassen
+und regelmäßig per ``$ git pull`` aktuell zu halten.
 
 ---
 
 ## 2. Voraussetzungen
 
-Das Labor wird zur Zeit nicht aktiv in den IWI Rechner-Pools unterstützt. Es
-wird daher empfohlen, die Laborplattform auf dem Laptop einzurichten. Dazu
-gehört:
+Das Labor wird im LKIT Rechner-Pool (Li 137) unterstützt. Die Laborplattform
+kann aber auch leicht auf dem eigenen Rechner eingerichtet werden. Dazu gehört:
 
 - Git Versionsverwaltung
 - Laufzeitplattform mit Python und Redis
 - Entwicklungs- und Arbeitsumgebung
 
-Alle Komponenten lassen sich auf den gängigen Plattformen trivial einfach
+Alle Komponenten lassen sich auf den gängigen Plattformen relativ einfach
 installieren und sind z.T. schon standardmäßig vorhanden. Einige Tipps zur
 Installation folgen unten.
 
@@ -50,7 +50,7 @@ Wenn ``git`` vorhanden ist, dann kopieren Sie das Labor Repository wie folgt
 (aus dem lokalen Netz der Hochschule oder über VPN):
 
 ```bash
-git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
+git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
 ```
 
 ### 2.2. Laufzeitplattform
@@ -105,7 +105,7 @@ Einrichtung der Python Umgebung ein (siehe unten).
 
 #### 2.2.2. Redis (erst ab Aufgabe 2)
 
-Redis ist ein NOSQL Key-Value-Store.
+Redis ist ein NOSQL Key-Value (KV) Store.
 
 - Allgemeine Informationen auf der [Redis Website](ttp://redis.io/)
 
@@ -142,7 +142,7 @@ Einrichtung der Python Umgebung ein (siehe unten).
 
 ### 2.3. Package- und Dependency-Management
 
-Die verwendeten Python Packages können per ``pip`` installiert werden. pip ist
+Die verwendeten Python Packages können per ``pip`` installiert werden. Das ist
 der integrierte Paketmanager des Python Laufzeitsystems. Bei Bedarf können
 Details im Tutorium nachgelesen werden:
 
@@ -153,7 +153,7 @@ Das Laborprojekt verwendet ``pip`` nicht direkt. Module sollen nämlich nicht im
 gesamten System sondern nur in einem isolierten Bereich für unser Labor
 installiert werden (unterschiedliche Projekte brauchen oft unterschiedliche
 Versionen gleicher Module). In Python benutzt man dafür *virtuelle Umgebungen*,
-die mit ``virtualenv`` erstellt werden. Bei Bedarf können Details im Tutorium
+die mit ``virtualenv`` erstellt werden. Bei Bedarf können Details hier
 nachgelesen werden:
 
 - [Creating Virtual
@@ -172,7 +172,8 @@ Installation von Modulen automatisch kombiniert und ist viel einfacher.
 (``Pipfile``, bzw. ``Pipfile.lock``),  die z.B. im Git Repository gut geteilt
 werden kann. Die Module dieser Liste können mit ``pipenv`` automatisch
 installiert werden. Dadurch kann man die Module des Labors auf dem eigenen
-Rechner mit nur einem Befehl installieren:
+Rechner mit nur einem Befehl installieren (eine offene Internetveårbindung wird
+dabei vorausgesetzt):
 
 ```bash
 cd vs2lab # angenommen hier liegt das vs2lab Repo
@@ -203,7 +204,7 @@ Bei der Arbeit mit Python wird nicht immer streng zwischen Entwicklungs- und
 Laufzeit von Systemen unterschieden. Entwickler können Teile des Systems wie
 Funktionen oder Objekte schon während der Entwicklung interaktiv ausprobieren,
 ohne ein explizites 'Hauptprogramm' ablaufen zu lassen. Auch Anwender können die
-Funktionen und Objekte von Python Systemen direkt aufrufen, auch ohne klassische
+Funktionen und Objekte von Python Systemen direkt aufrufen - ganz ohne klassische
 GUI. Dies ist besonders im Bereich von Data Science Systemen üblich.
 
 **IPython** ist ein [Command Line Interpreter
@@ -249,7 +250,7 @@ notebook Server wie folgt:
 
 ```bash
 cd vs2lab # angenommen hier liegt das vs2lab Repo
-pipenv run jupiter notebook
+pipenv run jupyter notebook
 ```
 
 Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner
@@ -274,17 +275,9 @@ aber darauf übertragbar sein.
 
 #### GIT
 
-- Bei Problemen mit dem selbst-signierten SSL Zertifikat des GitLab Servers kann
-  dessen Verifikation wie folgt umgangen werden:
-
-```bash
-git -c http.sslVerify=false clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
-```
-
-- Bei Problemen mit der HTTPS Verbindung kann das Repository auch per ``ssh``
-  'gecloned' werden. Hierzu benötigen Sie ein Benutzerkonto auf dem GitLab
-  Server und müssen dort einen Schlüssel hinterlegen. Bitte wenden Sie sich dazu
-  bei Bedarf an einen Dozenten.
+- Das Repository kann auch per ``ssh`` 'gecloned' werden. Hierzu benötigen Sie
+  ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel
+  hinterlegen.
 
 #### pipenv
 
