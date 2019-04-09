@@ -4,7 +4,7 @@ import socket
 import constCS
 from context import lab_logging
 
-lab_logging.setup()  # init loging channels for the lab
+lab_logging.setup(stream_level=logging.INFO)  # init loging channels for the lab
 
 
 class Server:
