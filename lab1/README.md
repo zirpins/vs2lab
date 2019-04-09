@@ -40,11 +40,11 @@ dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac)
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
 cd ~/git
-git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
+git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
 ```
 
 Bei Problemen siehe Troubleshooting im [VS2lab
-README](https://localhost:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
+README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
