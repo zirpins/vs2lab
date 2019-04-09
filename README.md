@@ -10,9 +10,6 @@ Die Laborarbeit beinhaltet zunächst jeweils die Analyse gegebener Beispiele fü
 einzelne Themenbereiche. Basierend darauf werden eigenständige Lösungen
 entwickelt.
 
-Neben den Pflichtaufgaben (1-5) kann durch Bearbeitung der Zusatzaufgabe (6) ein
-Bonus für die Modulklausur erworben werden.
-
 Die Abgabe der Teilaufgaben erfolgt im [ILIAS Kurs 'Verteilte Systeme 2
 Labor'](https://ilias.hs-karlsruhe.de/goto.php?target=crs_307307). Dort sind
 auch die genauen Regelungen der Abgabe zu finden.
@@ -76,13 +73,13 @@ Plattformen frei verfügbar.
 Für das Labor muss Python lokal verfügbar sein. Oft (vor allem bei Linux oder
 OSX) ist das schon der Fall. Sonst ist eine Installation erforderlich:
 
-- Prüfen einer vorhandenen Python Version: ``$ python3 --version`
+- Prüfen einer vorhandenen Python Version: ``$ python3 --version``
 - Python Installer unter  [Python Downloads](https://www.python.org/downloads/)
 - Alternativ über einen Package Manager in
   [Linux](https://docs.python-guide.org/starting/install3/linux/) (z.B.
-  Ubuntu:``$ sudo apt-get install python3.6``) oder
+  Ubuntu: ``$ sudo apt-get install python3.6``) oder
   [MacOS](https://docs.python-guide.org/starting/install3/osx/)
-  ([Homebrew](https://docs.brew.sh/Homebrew-and-Python); ``$ brew install
+  ([Homebrew](https://docs.brew.sh/Homebrew-and-Python): ``$ brew install
   python``)
 
 Verwendete Module sind u.a.
@@ -172,7 +169,7 @@ Installation von Modulen automatisch kombiniert und ist viel einfacher.
 (``Pipfile``, bzw. ``Pipfile.lock``),  die z.B. im Git Repository gut geteilt
 werden kann. Die Module dieser Liste können mit ``pipenv`` automatisch
 installiert werden. Dadurch kann man die Module des Labors auf dem eigenen
-Rechner mit nur einem Befehl installieren (eine offene Internetveårbindung wird
+Rechner mit nur einem Befehl installieren (eine offene Internetverbindung wird
 dabei vorausgesetzt):
 
 ```bash
@@ -268,7 +265,7 @@ beinhalten, z.B.:
 Anaconda vereinfacht die Installation und beinhaltet z.B. schon die *Spyder IDE*
 und *Jupiter Notebooks*. Zudem verwendet Anaconda eine eigene Lösung für
 virtuelle Umgebungen in Python. Es zielt vor allem auf wissenschaftliche
-Anwendungen von Python. Das VS2 Labor ist nicht auf Anaconda ausgelegt, sollte
+Anwendungen von Python. Das VS2 Labor ist *nicht* auf Anaconda ausgelegt, sollte
 aber darauf übertragbar sein.
 
 ### 2.5.2. Tipps und Troubleshooting
@@ -276,8 +273,7 @@ aber darauf übertragbar sein.
 #### Proxy
 
 - Die Installation von Python Dependencies erfordert i.d.R. eine offene
-  Internetverbindung. Eine Konfiguration zur Nutzung des Proxy wird aktuell noch
-  getestet.
+  Internetverbindung. Die Rechner im LKIT-Pool sind entsprechend konfiguriert.
 
 #### GIT
 
