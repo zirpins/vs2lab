@@ -44,7 +44,7 @@ git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
 ```
 
 Bei Problemen siehe Troubleshooting im [VS2lab
-README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-troubleshooting)
+README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-tipps-und-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
@@ -69,7 +69,7 @@ cd lab1
 
 Das Repository enthält einige Beispiele zum Einstieg in die Aufgabe. Es handelt
 sich um den **Echo Dienst**, der schon in der Vorlesung kurz vorgestellt wurde.
-Der Echo Dienst liegt in mehreren Varianten vor, um zu zu demonstrieren, wie
+Der Echo Dienst liegt in mehreren Varianten vor, um zu demonstrieren, wie
 solche Systeme organisiert und benutzt werden können.
 
 Allgemein wird der Echo Dienst durch eine **Schicht** der Gesamtarchitektur
@@ -96,14 +96,14 @@ Die erste Variante besteht aus zwei separaten Skripten die beide über den Pytho
 Interpreter ausgeführt werden. Starten Sie mit dem Server:
 
 ```bash
-cd ~/git/vs2lab/Aufgabe1
+cd ~/git/vs2lab/lab1
 pipenv run python server.py
 ```
 
 Wiederholen Sie dies danach für den Client:
 
 ```bash
-cd ~/git/vs2lab/Aufgabe1
+cd ~/git/vs2lab/lab1
 pipenv run python client.py
 ```
 
@@ -154,7 +154,7 @@ Nun werden zwei Varianten als Jupyter Notebook gezeigt. Starten Sie dazu Jupyter
 wie folgt:
 
 ```bash
-cd ~/git/vs2lab/Aufgabe1
+cd ~/git/vs2lab/lab1
 pipenv run jupyter notebook
 ```
 
@@ -192,11 +192,11 @@ besteht am Ende durch den Fork trotzdem aus zwei Prozessen.
 Das letzte Beispiel soll die Implementierung eines **Unit Test** in Python
 zeigen. Zum Testen wird das Package
 [unittest](https://docs.python.org/3/library/unittest.html) verwendet. Der Test
-liegt als Datei ``clientserver_test.py`` vor. Führen Sie den Test wie folgt aus:
+liegt als Datei ``test_clientserver.py`` vor. Führen Sie den Test wie folgt aus:
 
 ```bash
-cd ~/git/vs2lab/Aufgabe1
-pipenv run python clientserver_test.py
+cd ~/git/vs2lab/lab1
+pipenv run python test_clientserver.py
 ```
 
 Im Test wird ein Tread für die Ausführung des Servers verwendet. Näheres dazu
@@ -219,7 +219,7 @@ Benutzer als Python Funktionen aufgerufen werden können und wo die Ausgabe der
 Ergebnisse erfolgt.
 
 Auch der Telefonauskunft Dienst soll als Prozess in einem zweiten Jupyter
-Notebook laufen. Die Schnittstelle des Telefonauskunft Dienst soll zwei
+Notebook laufen. Die Schnittstelle des Telefonauskunft Dienstes soll zwei
 Operationen bereitstellen:
 
 1. `GET` bekommt als Parameter einen Namen und sucht diesen in der
