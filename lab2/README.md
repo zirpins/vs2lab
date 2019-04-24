@@ -4,7 +4,7 @@ Das zweite Labor beschäftigt sich hauptsächlich mit **RPC-Kommunikation** in
 verschiedenen Varianten. Ein erstes Beispiel zeigt eine einfache
 RPC-Implementierung im Detail und nutzt dabei einen generischen
 **Kommunikationskanal (Channel)** den wir später noch öfter verwenden werden.
-Ein zweites Beispiel zeigt kurz die Anwendung des speziellen RPC Frameworks
+Ein zweites Beispiel zeigt kurz die Anwendung des speziellen RPC-Frameworks
 **RPyC**. Die Programmieraufgabe beschäftigt sich mit der Erweiterung der
 einfachen RPC-Implementierung um **asynchrone RPCs**.
 
@@ -20,8 +20,8 @@ Allgemeine **Ziele** dieses Labors:
 
 ### 1.1. Software installieren
 
-Sie haben in
-[Aufgabe1](https://iwi-i-gitlab-1.hs-karlsruhe.de:2443/zich0001/vs2lab/blob/master/lab1/README.md#1-vorbereitung)
+Sie haben in der
+[Vorbereitung von Aufgabe1](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master/lab1#1-vorbereitung)
 bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter
 eingerichtet.
 
@@ -29,8 +29,8 @@ Nun kommt noch eine Komponente hinzu. Installieren Sie bitte zusätzlich
 
 - **Redis** (ein verbreiteter NOSQL Key-Value-Datastore)
 
-Orientieren Sie sich zur Einrichtung der Umgebung an der Beschreibung im [VS2lab
-README](https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab#222-redis-erst-ab-aufgabe-2).
+Orientieren Sie sich zur Einrichtung der Umgebung an der [Beschreibung im VS2lab
+README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#222-redis-erst-ab-aufgabe-2).
 
 ### 1.2. Projekt clonen und/oder aktualisieren
 
@@ -40,7 +40,7 @@ dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac)
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
 cd ~/git
-git clone https://IWI-I-gitlab-1.HS-Karlsruhe.DE:2443/zich0001/vs2lab.git
+git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
 ```
 
 Falls schon vorhanden aktualisieren Sie das Repository wie folgt:
@@ -50,10 +50,10 @@ cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git pull
 ```
 
-Bei Problemen siehe Troubleshooting im [VS2lab
-README](https://iwi-i-gitlab-1.hs-karlsruhe.de:2443/zich0001/vs2lab/tree/master#252-troubleshooting)
+Bei Problemen siehe [Troubleshooting im VS2lab
+README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-tipps-und-troubleshooting).
 
-### 1.3. Python Umgebung installieren
+### 1.3. Python-Umgebung installieren
 
 Falls nicht schon geschehen, wechseln Sie in das Verzeichnis des Repositories
 und installieren Sie die vorgegebenen Packages in eine virtuelle Umgebung für
@@ -73,13 +73,13 @@ cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 cd lab2
 ```
 
-## 2. Beispiele für RPC Kommunikation
+## 2. Beispiele für RPC-Kommunikation
 
-Das Labor beginnt mit zwei Beispielen zur RPC Kommunikation.
+Das Labor beginnt mit zwei Beispielen zur RPC-Kommunikation.
 
-### 2.1. Anwendung von RPCs auf *Sprachebene* mit dem **rpyc** Framework
+### 2.1. Anwendung von RPCs auf *Sprachebene* mit dem **rpyc**-Framework
 
-Zunächst wollen wir ein 'echtes' RPC Framework benutzen. Das Beispiel dient zur
+Zunächst wollen wir ein 'echtes' RPC-Framework benutzen. Das Beispiel dient zur
 Veranschaulichung von RPCs auf der Sprachebene, die die Kommunikation in
 verteilten Systemen fast komplett verstecken und sehr einfach benutzbar machen.
 
@@ -97,9 +97,9 @@ $ ls -l
 -rw-r--r--  1 zirpins  staff  583 Oct 26 13:26 server.py
 ```
 
-Die Datei `server.py` enthält den Server Prozess, der die Funktionen seiner
-`DBList` Klasse als *Service* entfernt nutzbar macht. Der Client Prozess in
-`client.py` ruft diese Operationen des Services über eine Server Verbindung
+Die Datei `server.py` enthält den Server-Prozess, der die Funktionen seiner
+`DBList` Klasse als *Service* entfernt nutzbar macht. Der Client-Prozess in
+`client.py` ruft diese Operationen des Services über eine Server-Verbindung
 direkt auf.
 
 Für Client und Server besteht kein wesentlicher Unterschied zur Programmierung
@@ -134,7 +134,7 @@ Detaillierte Informationen zu RPyC finden Sie hier:
 
 ### 2.2. Implementierung einer einfachen *RPC-Middleware*
 
-Wir betrachten nun die Realisierung eines RPC Systems auf der Middleware-Ebene.
+Wir betrachten nun die Realisierung eines RPC-Systems auf der Middleware-Ebene.
 Das Beispiel finden Sie hier:
 
 ```bash
@@ -147,8 +147,8 @@ $ ls -l
 -rw-r--r--  1 zirpins  staff    269 Oct 30 20:16 runsrv.py
 ```
 
-Die RPC-Implementierung befindet sich in ``rpc.py`` mit Klassen für Client und
-Server Stubs. Die Stubs erstellen Nachrichten für Request sowie Reply und
+Die RPC-Implementierung befindet sich in ``rpc.py`` mit Klassen für Client- und
+Server-Stubs. Die Stubs erstellen Nachrichten für Request sowie Reply und
 übertragen diese Nachrichten über einen Kommunikationskanal.
 
 #### 2.2.1. Kommunikation per `lab_channel`
@@ -183,14 +183,14 @@ redis-server
 
 ```bash
 cd ~/git/vs2lab/lab2/channel
-pipenv run python runcl.py
+pipenv run python runsrv.py
 ```
 
 - Terminal 3
 
 ```bash
 cd ~/git/vs2lab/lab2/channel
-pipenv run python runsrv.py
+pipenv run python runcl.py
 ```
 
 #### 2.2.2. Zurück zum RPC-Beispiel
@@ -237,7 +237,7 @@ Aktivitäten fortfahren. Wenn der Server das Ergebnis fertiggestellt hat, sendet
 er es zum Client zurück. Im Client-Prozess kann dann z.B. eine Callback Funktion
 aufgerufen werden, die das Ergebnis verarbeitet.
 
-Erweitern Sie nun die Client und Server Klassen so, dass diese den oben
+Erweitern Sie nun die Client- und Server-Klassen so, dass diese den oben
 beschriebenen Ablauf implementieren. Nutzen Sie dabei den `lab_channel`, um die
 zusätzliche Kommunikation des Acknowledgements zu realisieren.
 
@@ -254,21 +254,21 @@ von Threads und wird wie folgt gestartet:
 
 ```bash
 cd ~/git/vs2lab/lab2/threading
-pipenv run python async_zip.py.py
+pipenv run python async_zip.py
 ```
 
 Python Threads erlauben zwar keine echte Parallelität der Ausführung, sind aber
 gerade bei blockierenden I/O-Aufrufen sehr nützlich, da Sie die abwechselnde
 Ausführung von I/O- und weiteren Anweisungen ohne Wartezeit erlauben.
 
-Die threading API ist hier dokumentiert:
+Die ``threading``-API ist hier dokumentiert:
 
 - threading ([thread-based
   parallelism](https://docs.python.org/3/library/threading.html))
 
 ### 3.2 Aufgabe und Anforderungen kurz und knapp
 
-- Erweitern Sie Client- und Server-Klassen des RPC-Beispiels in `rpc.py`so, dass
+- Erweitern Sie Client- und Server-Klassen des RPC-Beispiels in `rpc.py` so, dass
   sie den Ablauf eines asynchronen RPC realisieren.
 - Passen Sie auch die dazugehörigen Client- und Server-Skripte `runcl.py` und
   `runsrv.py` entsprechend an.
