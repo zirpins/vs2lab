@@ -35,7 +35,7 @@ class Client:
 
     def run(self):
         self.ci.bind(self.client)
-        self.ci.send_to(self.server, 'Hello from ' + self.client)
+        self.ci.send_to(self.server, 'Hello says ' + self.client)
         answer = self.ci.receive_from(self.server)
         print("Got answer {} from {}.".format(answer[1], answer[0]))
         self.ci.leave('client')
