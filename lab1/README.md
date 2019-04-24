@@ -204,34 +204,34 @@ folgt im nächsten Labor.
 
 ## 3 Aufgabe
 
-Nun sind Sie an der Reihe. Implementieren Sie den Telefonauskunft-Dienst, den
+Nun sind Sie an der Reihe. Implementieren Sie den Telefonauskunftdienst, den
 wir in der Vorlesung als Beispiel für Multi-Tier Architekturen diskutiert haben.
 
 ### 3.1 Übersicht
 
 Ihre Implementierung soll als 2-Tier Architektur realisiert sein (d.h. ein
-Prozess für die Benutzerschnittstelle und ein Prozess für den Telefonauskunft
-Dienst). Für den Kommunikationskanal verwenden Sie eine TCP Verbindung über die
-Socket Schnittstelle.
+Prozess für die Benutzerschnittstelle und ein Prozess für den
+Telefonauskunftdienst). Für den Kommunikationskanal verwenden Sie eine
+TCP-Verbindung über die Socket Schnittstelle.
 
-Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienst-Aufrufe vom
-Benutzer als Python Funktionen aufgerufen werden können und wo die Ausgabe der
+Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienstaufrufe vom
+Benutzer als Python-Funktionen aufgerufen werden können und wo die Ausgabe der
 Ergebnisse erfolgt.
 
-Auch der Telefonauskunft Dienst soll als Prozess in einem zweiten Jupyter
-Notebook laufen. Die Schnittstelle des Telefonauskunft Dienstes soll zwei
-Operationen bereitstellen:
+Auch der Telefonauskunftdienst soll als Prozess in einem zweiten
+Jupyter-Notebook laufen. Die Schnittstelle des Telefonauskunftdienstes soll
+zwei Operationen bereitstellen:
 
 1. `GET` bekommt als Parameter einen Namen und sucht diesen in der
-   Telefon-Datenbank. Das Ergebnis wird über den Socket an den Client Prozess
+   Telefondatenbank. Das Ergebnis wird über den Socket an den Client-Prozess
    zurück gesendet.
-2. `GETALL` sendet alle Einträge der Telefon-Datenbank per Socket an den Client
-   Prozess zurück.
+2. `GETALL` sendet alle Einträge der Telefondatenbank per Socket an den
+   Client-Prozess zurück.
 
-Die Telefon-Datenbank können Sie "In-Memory" als Python
+Die Telefondatenbank können Sie "In-Memory" als Python
 [Dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
 implementieren. Konzentrieren Sie sich auf den Entwurf und die Implementierung
-eines Protokolls für den Telefonauskunft Dienst. Hierbei müssen Sie die
+eines Protokolls für den Telefonauskunftdienst. Hierbei müssen Sie die
 notwendigen Arten von Nachrichten, deren Kodierung als Byte- bzw. Textfolge und
 deren Abfolge festlegen.
 
@@ -239,11 +239,11 @@ deren Abfolge festlegen.
 
 - Machen Sie die Schritte im Socket-Lebenszyklus durch **Log Ausgaben** in
   Client und Server Prozess deutlich.
-- Schreiben Sie **Unit Tests** für die Dienst-Schnittstelle und die
+- Schreiben Sie **Unit Tests** für die Dienstschnittstelle und die
   Backend-Funktionen.
-  - **Für Experten**: verwenden Sie im Testcase für `GETALL` ein Telefonbuch mit
+  - **Für Experten**: verwenden Sie im Test-Case für `GETALL` ein Telefonbuch mit
     500 Einträgen
-- Erstellen Sie für die Nutzung Ihres Codes im Client und Server Prozess je ein
+- Erstellen Sie für die Nutzung Ihres Codes im Client- und Server-Prozess je ein
   **Jupiter Notebook** mit kurzen Erläuterungen der Anwendungsschritte als
   Markdown.
 
