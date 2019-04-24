@@ -249,6 +249,12 @@ deren Abfolge festlegen.
 
 ### 3.3 Tipps
 
+-  Jupyter Notebook auf LKIT Poolrechner
+    - Problem: Jupyter Server bricht beim Start ab mit Fehlermeldung "Cannot assign requested address".
+        - Lösung: Aufruf mit ``pipenv run jupyter notebook --ip 127.0.0.1``
+    - Problem: Server startet aber Notebook bekommt keine Verbindung
+        - Lösung: **Chromium** Browser verwenden (statt z.B. Firefox)
+
 ... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
 ### 3.4 Abgabe
