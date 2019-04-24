@@ -8,7 +8,7 @@ logger = logging.getLogger('vs2lab.lab2.rpc.runsrv')
 
 chan = lab_channel.Channel()
 chan.channel.flushall()
-logger.info('Flushed all redis keys.')
+logger.debug('Flushed all redis keys.')
 
 srv = rpc.Server()
 srv.run()
