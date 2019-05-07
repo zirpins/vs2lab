@@ -74,7 +74,7 @@ Das erste Beispiel zeigt, wie die gängige Request-Reply Kommunikation mit 0MQ
 *Request-* und *Reply-Sockets* gegenüber den einfachen Berkeley Sockets
 vereinfacht werden kann. 0MQ verwendet dabei Nachrichten statt Streams und es
 wird keine Angabe der Übertragungsgröße benötigt. Ein Request Socket des Client
-wird jeweils mit einem Reply Socket des Server gekkoppelt.
+wird jeweils mit einem Reply Socket des Server gekoppelt.
 
 Sie starten Server und Client nach dem nun schon bekannten Muster in zwei
 Terminals.
@@ -97,16 +97,16 @@ Wir wollen nun noch etwas experimentieren. Zunächst schauen wir uns an, was es
 bedeutet, dass 0MQ asynchron arbeitet. Probieren Sie dazu folgende Kombination
 aus:
 
-1. Terminal1: starte `client.py`
-2. Terminal2: starte `server.py`
+1. Terminal1: `pipenv run python client.py`
+2. Terminal2: `pipenv run python server.py`
 
 Die Kopplung von je zwei Sockets können Sie durch folgendes erweiterte
 Experiment nachverfolgen:
 
-1. Terminal1: starte `client.py`
-2. Terminal2: starte `client1.py`
-3. Terminal3: starte `server.py`
-4. Terminal3: starte `server.py`
+1. Terminal1: `pipenv run python client.py`
+2. Terminal2: `pipenv run python client1.py`
+3. Terminal3: `pipenv run python server.py`
+4. Terminal3: `pipenv run python server.py`
 
 **Aufgabe Lab3.1:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
@@ -116,17 +116,23 @@ Experimenten.
 Mit dem Publish-Subscribe Muster lässt sich *1-n Kommunikation* (ein Sender, n
 Empfänger) realisieren. Zudem können Nachrichten nach Themen gefiltert werden.
 
+Wechseln Sie zunächst in das entsprechende Verzeichnis:
+
+```bash
+cd ~/git/vs2lab/lab3/zmq2 # angenommen hier liegt das vs2lab Repo
+```
+
 #### Experiment1
 
-1. Terminal1: starte `server.py`
-2. Terminal2: starte `client.py`
-3. Terminal3: starte `client.py`
+1. Terminal1: `pipenv run python server.py`
+2. Terminal2: `pipenv run python client.py`
+3. Terminal3: `pipenv run python client.py`
 
 #### Experiment 2
 
-1. Terminal1: starte `server.py`
-2. Terminal2: starte `client.py`
-3. Terminal3: starte `client1.py`
+1. Terminal1: `pipenv run python server.py`
+2. Terminal2: `pipenv run python client.py`
+3. Terminal3: `pipenv run python client1.py`
 
 **Aufgabe Lab3.2:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
@@ -147,18 +153,24 @@ Farmer-ID darf nur einmal verwendet werden, da sie einen *PUSH-Socket* bindet.
 Worker-ID dient nur der Anzeige. Es können beliebig viele Worker gestartet
 werden, die jeweils mit ihrem *PULL-Sockets* die beiden Farmer kontaktieren.
 
+Wechseln Sie zunächst in das entsprechende Verzeichnis:
+
+```bash
+cd ~/git/vs2lab/lab3/zmq3 # angenommen hier liegt das vs2lab Repo
+```
+
 Gehen sie nun wie folgt vor:
 
 #### Experiment1
 
 1. Terminal1: `pipenv run python tasksrc.py 1`
 2. Terminal2: `pipenv run python tasksrc.py 2`
-3. Terminal3: `pipenv run python taskwrk.py 1`
+3. Terminal3: `pipenv run python taskwork.py 1`
 
 #### Experiment 2
 
-1. Terminal1: `pipenv run python taskwrk.py 1`
-2. Terminal2: `pipenv run python taskwrk.py 2`
+1. Terminal1: `pipenv run python taskwork.py 1`
+2. Terminal2: `pipenv run python taskwork.py 2`
 3. Terminal3: `pipenv run python tasksrc.py 1`
 
 **Aufgabe Lab3.3:** Erklären Sie das Verhalten der Systeme in den beiden
