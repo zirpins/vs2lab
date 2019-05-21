@@ -2,7 +2,7 @@
 
 Das Thema im 4. Labor ist die Auflösung linearer Namen. Wir betrachten dazu die
 Systemklasse *verteilter Hash-Tabellen* (Distributed Hash Table - DHT) und
-konkret eine vereinfachte Implementierung des **Chord System**.
+konkret eine vereinfachte Implementierung des **Chord Systems**.
 
 Die Ziele im einzelnen:
 
@@ -71,8 +71,8 @@ Message-Oriented-Middleware verwendet.
 
 #### Knoten Management
 
-Alle Knoten melden sich an der Gruppe `node` an und können dort vom zentralen
-Channel abgefragt werden. Dies ist eine Vereinfachung gegenüber echten
+Alle Knoten melden sich an der Gruppe `node` an, die vom zentralen
+Channel abgefragt werden kann. Dies ist eine Vereinfachung gegenüber echten
 Peer-to-Peer Systemen, in denen man keine zentrale Registry aller Knoten hat.
 Die Verwaltung von kommenden und gehenden Knoten ist jedoch ein Aspekt, der in
 diesem Labor nicht im Mittelpunkt steht. Daher wird der zentrale Channel beim
@@ -90,7 +90,7 @@ Bei einer Namensauflösung müssen mehrere Knoten in einer Sequenz von `LOOKUP`
 Aufrufen bis zum letztendlichen Ziel traversiert werden. Dies kann entweder
 iterativ durch einen Client Prozess 'von außen' oder rekursiv durch eine
 Erweiterung der Knotenlogik realisiert werden. Momentan ist die Steuerung der
-Namensauflösung noch nicht implementiert, denn es wird Inhalt der
+Namensauflösung noch nicht implementiert, denn dies wird Inhalt der
 Programmieraufgabe sein.
 
 #### Datenverwaltung
@@ -144,20 +144,27 @@ auf dem Weg zum Ziel liefern, bis dieses Ziel am Ende erreicht ist.
 
 Die Steuerung der einzelnen Schritte kann entweder durch einen zentralen Client
 Prozess von außen (iterativ) koordiniert werden oder sich durch die verteilen
-Knoten Prozesse selbst rekursiv fortsetzen. Die Aufgabe besteht darin, die
-rekursive Variante implementieren.
+Knoten Prozesse selbst rekursiv fortsetzen. **Die Aufgabe besteht darin, die
+rekursive Variante implementieren.**
 
 ## 3.2 Aufgabe und Anforderungen kurz und knapp
 
 - Erweitern Sie die `LOOKUP` Operation von ChordNode so, dass diese für eine
   Anfrage nach Schlüssel `key` direkt `succ(key)` zurückgibt. Falls der
-  angefragte Knoten nicht selbst der gesuchte Knoten ist, soll er eine rekursive
-  `LOOKUP` Anfrage an den besten bekannten Knoten machen usw.
+  angefragte Knoten nicht selbst der gesuchte Knoten ist, soll er zu dessen
+  Bestimmung eine rekursive `LOOKUP` Anfrage an den besten bekannten Knoten
+  machen usw.
 - Erweitern Sie ebenfalls die Klasse `DummyChordClient`. Hier soll eine `LOOKUP`
   Anfrage nach einem zufälligen validen Schlüssel an einen ebenfalls zufälligen
   existierenden Knoten erfolgen und der gefundene Name ausgegeben werden.
 
 ### 3.3 Tipps
+
+- Bei einer einfachen Rekursion werden alle beteiligten Knoten (bis auf den
+  letzten) zu Clients, die jeweils auf eine Antwort warten und diese dann
+  weiterreichen, bis am Ende der ursprünglichen Client die Antwort bekommt.
+  Alternativ kann die Implementierung endrekursiv erfolgen, dann sendet der
+  letzte Knoten die Antwort direkt zum ursprünglichen Client zurück.  
 
 ... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
