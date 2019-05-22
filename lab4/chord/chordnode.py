@@ -108,7 +108,7 @@ class ChordNode:
         elif self.in_between(key, self.node_id + 1, self.finger_table[1]):  # key in (self,FT[1]]
             return self.finger_table[1]  # successor responsible
         for i in range(1, self.n_bits + 1):  # go through rest of FT
-            if self.in_between(key, self.finger_table[i], self.finger_table[(i + 1) % self.n_bits]):
+            if self.in_between(key, self.finger_table[i], self.finger_table[(i + 1) % (self.n_bits + 1)]):
                 return self.finger_table[i]  # key in [FT[i],FT[i+1])
 
     def enter(self):
