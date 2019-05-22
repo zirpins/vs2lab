@@ -78,7 +78,7 @@ class Process:
         self.queue = tmp  # and copy to new queue
         self.clock = self.clock + 1  # Increment clock value
         msg = (self.clock, self.process_id, RELEASE)
-        # Mulicast release notofication
+        # Multicast release notification
         self.channel.send_to(self.other_processes, msg)
 
     def __allowed_to_enter(self):
