@@ -60,7 +60,7 @@ cd lab5/mutex
 
 ## 2. Beispiel Implementierung des Lamport Mutex Algorithmus
 
-Als Startpunkt des Labors dient die Implementierung von konkurierenden Peer
+Als Startpunkt des Labors dient die Implementierung von konkurrierenden Peer
 Prozessen eines Systems mit wechselseitigem Ausschluss im Verzeichnis
 `vs2lab/lab5/mutex`. Hier sind zwei Skripte interessant:
 
@@ -73,11 +73,11 @@ Die Struktur der Implementierung ähnelt Aufgabe 4.
 
 Die Klasse `Process` verwendet wieder das `lab_channel` Framework. Hier wird
 *Redis* als Message-Oriented-Middleware verwendet. Alle Knoten melden sich an
-der Gruppe `proc` an und können dort vom zentralen Channel abgefragt werden.
+der Gruppe `proc` an, die vom zentralen Channel abgefragt werden kann.
 
-Prozesse führen eine Hauptschleife aus, in der sie periodisch in eine gemeinsame
-kritische Sektion Eintreten und sich dabei untereinander abstimmen. Sie verfügen
-dabei jeweils über eine logische Uhr, die bei eigenen Aktivitäten oder beim
+Prozesse führen die Hauptschleife aus, in der sie periodisch in eine gemeinsame
+kritische Sektion eintreten und sich dabei untereinander abstimmen. Sie verfügen
+dazu jeweils über eine logische Uhr, die bei eigenen Aktivitäten oder beim
 Empfang von Nachrichten angepasst wird. Prozesse verfügen zudem über eine
 Warteschlange (Queue) zur Anordnung von Nachrichten zum Ein- und Austritt aus
 der kritischen Sektion, die nach ihren logische Zeitstempeln geordnet sind.
@@ -92,13 +92,13 @@ Mutex Systems mit simuliertem Knotenausfall. Hierbei kann die Anzahl der Knoten
 
 Das Skript verwendet wieder das [Python `multiprocessing`
 Modul](https://docs.python.org/3.7/library/multiprocessing.html), um Knoten als
-separate Prozesse mittels  `Spawn` zu starten,  was auch unter Windows
+separate Prozesse mittels  `Spawn` zu starten, was auch unter Windows
 funktioniert.
 
 ### 2.1. Starten des Systems
 
 `doit.py` baut im aktuellen Zustand ein P2P-System aus koordinierten
-Prozessen auf. Nach einer kurzen Pause simuliert das Skript den Absturz einese
+Prozessen auf. Nach einer kurzen Pause simuliert das Skript den Absturz eines
 Prozesses durch dessen Terminierung. Das voll verteilte Mutex System kann dann
 nicht mehr zu einer Einigung kommen und bleibt stehen. Durch Deaktivierung
 (Auskommentieren) der Terminierung können Sie das Mutex System kontinuierlich
@@ -118,8 +118,8 @@ Sie sollen nun den Mutex Algorithmus erweitern.
 
 ## 3.1 Übersicht
 
-Aktuell kann der Algorithmus nicht mit Absturz Ausfällen umgehen. Das System
-bleibt nach dem Ausfall eines Knotens nach kurzer Zeit stehen.
+Aktuell kann der Algorithmus nicht mit Absturzausfällen umgehen. Das System
+bleibt beim Ausfall eines Knotens nach kurzer Zeit stehen.
 
 Die Aufgabe besteht in der Erweiterung des Mutex Algorithmus zur Maskierung von
 Absturzausfällen. Das System soll trotz des simulierten Ausfalls eines Prozesses

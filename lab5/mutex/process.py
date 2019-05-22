@@ -17,11 +17,11 @@ class Process:
     A process broadcasts an ENTER request if it wants to enter the CS. A process
     that doesn't want to ENTER replies with an ALLOW broadcast. A process that
     wants to ENTER and receives another ENTER request replies with an ALLOW
-    broadcast (which is then later intime than its own ENTER request).
+    broadcast (which is then later in time than its own ENTER request).
 
     A process enters the CS if a) its ENTER message is first in the queue (it is
-    the oldest pending message) AND b) all other processes have send messages
-    that are younger (either ENTER or ALLOW). Release requests purge
+    the oldest pending message) AND b) all other processes have sent messages
+    that are younger (either ENTER or ALLOW). RELEASE requests purge
     corresponding ENTER requests from the top of the local queues.
 
     Message Format:
@@ -49,6 +49,7 @@ class Process:
 
     def __cleanup_queue(self):
         if len(self.queue) > 0:
+            #self.queue.sort(key = lambda tup: tup[0])
             self.queue.sort()
             # There should never be old ALLOW messages at the head of the queue
             while self.queue[0][2] == ALLOW:
@@ -133,7 +134,7 @@ class Process:
 
     def run(self):
         while True:
-            # Enter the critical section if there are more than one processes left
+            # Enter the critical section if there are more than one process left
             # and random is true
             if len(self.all_processes) > 1 and \
                     random.choice([True, False]):
