@@ -210,28 +210,32 @@ wir in der Vorlesung als Beispiel für Multi-Tier Architekturen diskutiert haben
 ### 3.1 Übersicht
 
 Ihre Implementierung soll als 2-Tier Architektur realisiert sein (d.h. ein
-Prozess für die Benutzerschnittstelle und ein Prozess für den
-Telefonauskunftdienst). Für den Kommunikationskanal verwenden Sie eine
-TCP-Verbindung über die Socket Schnittstelle.
+Prozess für den Auskunft Client mit Benutzerschnittstelle und ein Prozess für
+den Auskunft Server). Für den Kommunikationskanal verwenden Sie eine
+TCP-Verbindung über die Socket-Schnittstelle. Der Auskunft-Dienst soll als
+Anwendungsschicht über der Transportschicht implementiert werden. Die Nutzung
+des Auskunft-Dienstes soll über eine Auskunft-API Schnittstelle erfolgen (siehe
+Abbildung).
 
-Die Benutzerschnittstelle ist ein Jupyter Notebook, in dem Dienstaufrufe vom
-Benutzer als Python-Funktionen aufgerufen werden können und wo die Ausgabe der
-Ergebnisse erfolgt.
+![Schichtenarchitektur](img/auskunft_arch.png "Schichtenarchitektur") 
 
-Auch der Telefonauskunftdienst soll als Prozess in einem zweiten
-Jupyter-Notebook laufen. Die Schnittstelle des Telefonauskunftdienstes soll
-zwei Operationen bereitstellen:
+Die Benutzerschnittstelle ist ein Jupyter Notebook. Benutzer rufen den Dienst
+dort über die Auskunft-API als Python Funktionen auf und sehen dort die Ausgabe
+der Ergebnisse. Die Auskunft-API soll zwei Operationen bereitstellen:
 
 1. `GET` bekommt als Parameter einen Namen und sucht diesen in der
-   Telefondatenbank. Das Ergebnis wird über den Socket an den Client-Prozess
+   Telefon-Datenbank. Das Ergebnis wird über den Socket an den Client Prozess
    zurück gesendet.
-2. `GETALL` sendet alle Einträge der Telefondatenbank per Socket an den
-   Client-Prozess zurück.
+2. `GETALL` sendet alle Einträge der Telefon-Datenbank per Socket an den Client
+   Prozess zurück.
 
-Die Telefondatenbank können Sie "In-Memory" als Python
+Auch der Auskunft Server soll als Prozess in einem zweiten Jupyter
+Notebook laufen. Dessen Telefon-Datenbank können Sie "In-Memory" als Python
 [Dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
-implementieren. Konzentrieren Sie sich auf den Entwurf und die Implementierung
-eines Protokolls für den Telefonauskunftdienst. Hierbei müssen Sie die
+implementieren. 
+
+Konzentrieren Sie sich auf den Entwurf und die Implementierung eines Protokolls
+für den Telefonauskunft Dienst (Auskunft Protokoll). Hierbei müssen Sie die
 notwendigen Arten von Nachrichten, deren Kodierung als Byte- bzw. Textfolge und
 deren Abfolge festlegen.
 
