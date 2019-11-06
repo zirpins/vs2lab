@@ -106,7 +106,6 @@ Experiment nachverfolgen:
 1. Terminal1: `pipenv run python client.py`
 2. Terminal2: `pipenv run python client1.py`
 3. Terminal3: `pipenv run python server.py`
-4. Terminal3: `pipenv run python server.py`
 
 **Aufgabe Lab3.1:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
