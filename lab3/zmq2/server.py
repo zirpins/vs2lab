@@ -13,4 +13,4 @@ publisher.bind(address)  # bind socket to the address
 while True:
     time.sleep(5)  # wait every 5 seconds
     publisher.send(("TIME " + str(datetime.datetime.now().time())).encode())  # publish the current time
-    publisher.send(("DATE " + str(datetime.date.today())).encode())  # publish the current time
+    publisher.send(("DATE " + str(datetime.date.today())).encode())  # publish the current date
