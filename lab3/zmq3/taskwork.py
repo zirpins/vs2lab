@@ -16,6 +16,8 @@ pull_socket = context.socket(zmq.PULL)  # create a pull socket
 pull_socket.connect(address1)  # connect to task source 1
 pull_socket.connect(address2)  # connect to task source 2
 
+time.sleep(1) 
+
 print("{} started".format(me))
 
 while True:
