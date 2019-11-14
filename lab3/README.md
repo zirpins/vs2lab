@@ -140,7 +140,7 @@ Experimenten.
 
 Das letzte Beispiel zeigt die Verteilung von Nachrichten von mehreren Sendern
 auf mehrere Empfänger. Sogenannte 'Farmer' (`tasksrc.py`) erstellen Aufgaben
-('Tasks') die von einer Menge von 'Workern' (`taskwrk.py`) verarbeitet werden.
+('Tasks') die von einer Menge von 'Workern' (`taskwork.py`) verarbeitet werden.
 Die Tasks eines Farmers können an jeden Worker gehen und Worker akzeptieren
 Tasks von jedem Farmer. Bei mehreren Alternativen Farmer/Worker Prozessen werden
 die Tasks gleichverteilt.
@@ -148,7 +148,7 @@ die Tasks gleichverteilt.
 `tasksrc.py` wird mit der Farmer-ID (1 oder 2) als Parameter gestartet. Jede
 Farmer-ID darf nur einmal verwendet werden, da sie einen *PUSH-Socket* bindet.
 
-`tasksrc.py` wird mit der Worker-ID (beliebig) als Parameter gestartet. Die
+`taskwork.py` wird mit der Worker-ID (beliebig) als Parameter gestartet. Die
 Worker-ID dient nur der Anzeige. Es können beliebig viele Worker gestartet
 werden, die jeweils mit ihrem *PULL-Sockets* die beiden Farmer kontaktieren.
 
