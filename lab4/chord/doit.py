@@ -67,7 +67,7 @@ if __name__ == "__main__":  # if script is started from command line
     # we need to spawn processes for support of windows
     mp.set_start_method('spawn')
 
-    # create barriers to synchonize bootstrapping
+    # create barriers to synchronize bootstrapping
     bar1 = mp.Barrier(n+1)  # Wait for channel population to complete
     bar2 = mp.Barrier(n+1)  # Wait for ring construction to complete
 
@@ -89,6 +89,6 @@ if __name__ == "__main__":  # if script is started from command line
     clientproc.start()
     clientproc.join()
 
-    # wait for node procs to finish
+    # wait for node processes to finish
     for nodeproc in children:
         nodeproc.join()
