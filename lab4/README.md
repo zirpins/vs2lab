@@ -145,7 +145,7 @@ auf dem Weg zum Ziel liefern, bis dieses Ziel am Ende erreicht ist.
 Die Steuerung der einzelnen Schritte kann entweder durch einen zentralen Client
 Prozess von außen (iterativ) koordiniert werden oder sich durch die verteilen
 Knoten Prozesse selbst rekursiv fortsetzen. **Die Aufgabe besteht darin, die
-rekursive Variante implementieren.**
+rekursive Variante zu implementieren.**
 
 ## 3.2 Aufgabe und Anforderungen kurz und knapp
 
