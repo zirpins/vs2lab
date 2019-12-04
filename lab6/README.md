@@ -233,7 +233,7 @@ Ein Teilnehmer `P_k` übernimmt diese Rolle, der in Zustand `WAIT`, `PRECOMMIT`,
 Teilnehmer).
 
 `P_k` sendet seinen Zustand an alle `P_i`. `P_i` in späterem Zustand ignorieren
-dies, ansonsten schließen sie zum Zustand von `P_k` auf (d.h. sie wexhseln in
+dies, ansonsten schließen sie zum Zustand von `P_k` auf (d.h. sie wechseln in
 den jeweils korrespondierenden Zustand eines Teilnehmers) und senden
 entsprechende Nachrichten an `P_k`. Dann verfährt `P_k` wie folgt:
 
@@ -252,8 +252,8 @@ entsprechende Nachrichten an `P_k`. Dann verfährt `P_k` wie folgt:
 - **Mindestanforderung**
   - Implementieren Sie den *grundlegenden Ablauf* (Zustandsautomaten) des zentralisierten 3PC-Protokolls.
 - **Lösungsversuch**
-  - Berücksichtigen Sie die *Terminierung* ausgefallener Prozesse.
-  - Verwenden Sie für die Terminierung den gezeigten Ansatz mit neuem Koordinator.
+  - Berücksichtigen Sie die *Terminierung* des Protokolls nach dem Ausfall von Prozessen.
+  - Verwenden Sie für die Terminierung nach Koordinatorausfall den gezeigten Ansatz mit neuem Koordinator.
   - Zeigen Sie die Funktion der Terminierung anhand von simulierten Abstürzen.
 - **Abgrenzung**
   - *Nachrichtenverlust* sowie *multiple Abstürze* können ignoriert werden.
