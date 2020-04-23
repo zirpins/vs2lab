@@ -39,13 +39,16 @@ Installation folgen unten.
 
 Im Sommersemester 2020 wird zusätzlich ein Ubuntu Disk Image für VirtualBox
 angeboten, auf dem die Laborplattform komplett vorkonfiguriert ist. Sie brauchen
-dann auf Ihren Rechner nur VirtualBox installieren und können dann mit einer
-viertuellen Maschine auf Ihrem lokalen Rechner arbeiten.
+dann auf Ihrem Rechner nur VirtualBox installieren und können lokal mit einer
+virtuellen Maschine (VM) arbeiten.
 
 - [VirtualBox](https://www.virtualbox.org)
 - [VS2Lab Disk Image (ca. 3 GB)](https://bwsyncandshare.kit.edu/s/HbSmttdXxnbKwgm)
 
-Erstellen Sie in VirtualBox eine neue VM für Linux/Ubuntu64 (min. 4GB/2 Kerne) und wählen Sie das Disk Image als vorhandene Festplatte aus.
+Entpacken Sie zunächst das VS2Lab Disk Image (`VS2-Labor.zip`). Erstellen Sie
+dann in VirtualBox eine neue VM für Linux/Ubuntu64 (min. 4GB) und wählen Sie das
+Disk Image als vorhandene Festplatte aus. Danach können Sie der VM noch min.
+zwei Kerne zuordnen und sie anschließend starten. Das Passwort lautet "`ic4ip`".
 
 ### 2.1. Labor Repository
 
