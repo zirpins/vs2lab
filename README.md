@@ -35,6 +35,18 @@ Alle Komponenten lassen sich auf den gängigen Plattformen relativ einfach
 installieren und sind z.T. schon standardmäßig vorhanden. Einige Tipps zur
 Installation folgen unten.
 
+**NEU im Sommersemester 2020**
+
+Im Sommersemester 2020 wird zusätzlich ein Ubuntu Disk Image für VirtualBox
+angeboten, auf dem die Laborplattform komplett vorkonfiguriert ist. Sie brauchen
+dann auf Ihren Rechner nur VirtualBox installieren und können dann mit einer
+viertuellen Maschine auf Ihrem lokalen Rechner arbeiten.
+
+- [VirtualBox](https://www.virtualbox.org)
+- [VS2Lab Disk Image (ca. 3 GB)](https://bwsyncandshare.kit.edu/s/HbSmttdXxnbKwgm)
+
+Erstellen Sie in VirtualBox eine neue VM für Linux/Ubuntu64 (min. 4GB/2 Kerne) und wählen Sie das Disk Image als vorhandene Festplatte aus.
+
 ### 2.1. Labor Repository
 
 Das Labor nutzt die Git Versionsverwaltung und den GitLab Dienst zur
