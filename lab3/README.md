@@ -5,7 +5,7 @@ Im dritten Labor untersuchen wir eine konkrete Technik der
 Kommunikationsmuster mit dem [ZeroMQ Framework](http://zeromq.org) (0MQ)
 betrachtet. Eines davon, das *Paralel Pipeline* Muster, bildet in der Folge die
 Grundlage der Programmieraufgabe. Dabei wird ein einfaches System für die
-verteilte Datenverarbeitung realisiert, dass dem Grundprinzip von MapReduce
+verteilte Datenverarbeitung realisiert, das dem Grundprinzip von MapReduce
 Algorithmen aus der bekannten [Hadoop
 Plattform](https://de.wikipedia.org/wiki/Apache_Hadoop) entspricht.
 
