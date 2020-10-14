@@ -5,7 +5,7 @@ low-level **Sockets** und lernen dabei eine Menge über die Sprache **Python**
 und den Umgang mit Python-basierten Software Systemen. Die Ziele im einzelnen:
 
 - Einrichtung der Python Umgebung und erste Erfahrungen mit den Tools
-  - Python Editor/IDE, iPython Konsole/REPL, Jupiter Notebooks
+  - Python Editor/IDE, iPython Konsole/REPL, Jupyter Notebooks
 - Einführung in die Programmierung mit Python
 - Kennenlernen von Socket Programmierung mit dem Python Socket Modul
 
@@ -220,7 +220,7 @@ Abbildung).
 ![Schichtenarchitektur](img/auskunft_arch.png "Schichtenarchitektur") 
 
 Die Benutzerschnittstelle ist ein Jupyter Notebook. Benutzer rufen den Dienst
-dort über die Auskunft-API als Python Funktionen auf und sehen dort die Ausgabe
+dort über die Auskunft-API als Python Funktionen auf und sehen dort auch die Ausgabe
 der Ergebnisse. Die Auskunft-API soll zwei Operationen bereitstellen:
 
 1. `GET` bekommt als Parameter einen Namen und sucht diesen in der
