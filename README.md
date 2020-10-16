@@ -305,6 +305,13 @@ aber darauf übertragbar sein.
 - Als weitere Möglichkeit können Sie Packages einzeln installieren per ``pipenv
   install <modul>`` (Package Namen stehen im Pipfile)
 
+#### VM
+- sollte beim Start der virtuellen Maschine folgende Fehlermeldung erscheinen 
+> Die Hardware-Virtualisierung ist in den Systemeinstellungen aktiviert, obwohl dies vom Host-System nicht unterstützt wird. ...
+
+dann sollten Sie prüfen, ob im Bios die Hardware Virtualiserung aktiviert ist.
+- VirtualBox funktioniert auf neueren Versionen von Windows 10 nicht zusammen mit der Microsoft Virtualisierungslösung Hyper-V. Daher muss Hyper-V ggf. durch das Kommando ``bcdedit /set hypervisorlaunchtype off`` auf einer Kommandozeile mit Administrator-Rechten gefolgt von einem Neustart deaktiviert werden ([Quelle](https://kosilov.de/virtualbox-fehler-whvsetuppartition-failed)).
+
 ... to be continued.
 
 ## 3. Aufgaben
