@@ -309,7 +309,7 @@ aber darauf übertragbar sein.
 - sollte beim Start der virtuellen Maschine folgende Fehlermeldung erscheinen 
 > Die Hardware-Virtualisierung ist in den Systemeinstellungen aktiviert, obwohl dies vom Host-System nicht unterstützt wird. ...
 
-dann sollten Sie prüfen, ob im Bios die Hardware Virtualiserung aktiviert ist.
+dann sollten Sie prüfen, ob im Bios die Hardware Virtualisierung aktiviert ist.
 - VirtualBox funktioniert auf neueren Versionen von Windows 10 nicht zusammen mit der Microsoft Virtualisierungslösung Hyper-V. Daher muss Hyper-V ggf. durch das Kommando ``bcdedit /set hypervisorlaunchtype off`` auf einer Kommandozeile mit Administrator-Rechten gefolgt von einem Neustart deaktiviert werden ([Quelle](https://kosilov.de/virtualbox-fehler-whvsetuppartition-failed)).
 
 ... to be continued.
