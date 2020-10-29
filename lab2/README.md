@@ -227,7 +227,7 @@ In der Programmieraufgabe sollen Sie nun das System aus Beispiel 2.2. zu einem
 Der RPC aus Beispiel 2.2. ist synchron, d.h. der Client-Prozess wartet nach dem
 Operationsaufruf, bis das Ergebnis vom Server-Prozess zurückgesendet wurde. Wenn
 die Ausführung der Operation aufwendig ist, muss der Client-Prozess dabei ggf.
-lange warten. In manchen fällen kann es sich lohnen, diese Wartezeit für andere
+lange warten. In manchen Fällen kann es sich lohnen, diese Wartezeit für andere
 Aktivitäten zu nutzen.
 
 Bei einem asynchronen RPC erfolgt die Synchronisierung von Client und Server
@@ -243,8 +243,12 @@ zusätzliche Kommunikation des Acknowledgements zu realisieren.
 
 Um nicht beim Warten auf die Server-Antworten den Client-Prozess zu blockieren,
 gibt es verschiedene Möglichkeiten. Wir haben in der Vorlesung **Threads**
-behandelt, um solche Blockaden zu vermeiden. Dies sollen Sie hier anwenden und
-einen Python Thread verwenden, der die Kommunikation abwickelt.
+behandelt, um solche Blockaden zu vermeiden.
+
+Sie sollen in dieser Aufgabe einen Python Thread verwenden, um auf die
+Server-Antworten zu warten. Ferner soll die Verarbeitung des Ergebnisses
+ebenfalls in diesem Thread durch Aufruf einer Callback Funktion erfolgen. Die Callback
+Funktion soll der Anwender als Parameter beim RPC-Aufruf mitliefern.
 
 #### 3.1.1. Das Python `threading` Modul
 
@@ -278,6 +282,7 @@ Die ``threading``-API ist hier dokumentiert:
   eine lange Ausführungszeit zu simulieren.
 - Verwenden Sie im Client einen Thread zum Warten und Reagieren auf
   Server-Antworten.
+- Verwenden Sie zur Verarbeitung des Ergebnisses eine Callback-Funktion.
 - Machen Sie im Client einige Ausgaben auf der Konsole, um zu zeigen, dass er
   während des Wartens aktiv ist.
 - Am Ende soll der Client das Ergebnis des RPC auf der Konsole ausgeben.
