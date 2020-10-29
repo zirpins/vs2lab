@@ -242,13 +242,14 @@ beschriebenen Ablauf implementieren. Nutzen Sie dabei den `lab_channel`, um die
 zusätzliche Kommunikation des Acknowledgements zu realisieren.
 
 Um nicht beim Warten auf die Server-Antworten den Client-Prozess zu blockieren,
-gibt es verschiedene Möglichkeiten. Wir haben in der Vorlesung **Threads**
+gibt es verschiedene Möglichkeiten. Wir haben in der Vorlesung Threads
 behandelt, um solche Blockaden zu vermeiden.
 
-Sie sollen in dieser Aufgabe einen Python Thread verwenden, um auf die
+Sie sollen in dieser Aufgabe einen **Thread** verwenden, um auf die
 Server-Antworten zu warten. Ferner soll die Verarbeitung des Ergebnisses
-ebenfalls in diesem Thread durch Aufruf einer Callback Funktion erfolgen. Die Callback
-Funktion soll der Anwender als Parameter beim RPC-Aufruf mitliefern.
+ebenfalls in diesem Thread durch Aufruf einer **Callback-Funktion** erfolgen.
+Die Callback-Funktion soll der Anwender als Parameter beim RPC-Aufruf
+mitliefern.
 
 #### 3.1.1. Das Python `threading` Modul
 
