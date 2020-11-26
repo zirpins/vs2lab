@@ -109,7 +109,7 @@ Das Skript zeigt auch ein interessantes Beispiel für Prozess Migration. Hier
 wird das [Python `multiprocessing`
 Modul](https://docs.python.org/3.7/library/multiprocessing.html) verwendet, um
 Knoten (und einen Client) als separate Prozesse zu starten. Prozesse können per
-`Fork` oder `Spawn` erzeugt werden. In letzteren Fall kann dem neuen Prozess ein
+`Fork` oder `Spawn` erzeugt werden. In letzterem Fall kann dem neuen Prozess ein
 Parameter zur Initialisierung übermittelt werden. Dieses Feature erlaubt die
 Migration von Prozessen mit Weiterführung des Ausführungszustands auch ohne Fork
 unter Windows.
