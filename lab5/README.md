@@ -131,7 +131,7 @@ kontinuierlich weiterarbeiten.
   Teilnehmer bemerkt (woran kann man dies erkennen?)
 - Ändern Sie den Koordinationsmechanismus dann so ab, dass ausgefallene Prozesse
   ignoriert werden.
-- Durch die zufallsbedingte Ausführung des Systems können sich vielfälltige
+- Durch die zufallsbedingte Ausführung des Systems können sich vielfältige
   Situationen ergeben. Führen Sie das Skript mehrfach aus, um die
   Stabilität zu testen.
 - Verwenden Sie Log-Ausgaben, die die Funktionsweise Ihres Systems zeigen.
