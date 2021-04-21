@@ -62,11 +62,11 @@ Allgemeine Beschreibungen der Muster und der dazugehörigen 0MQ Sockets finden
 sich z.B. hier:
 
 - [Request-Reply: Ask and Ye Shall
-  Receive](http://zguide.zeromq.org/py:all#Ask-and-Ye-Shall-Receive)
+  Receive](https://zguide.zeromq.org/docs/chapter1/#Ask-and-Ye-Shall-Receive)
 - [Publish-Subscribe: Getting the Message
-  Out](http://zguide.zeromq.org/py:all#Getting-the-Message-Out)
+  Out](https://zguide.zeromq.org/docs/chapter1/#Getting-the-Message-Out)
 - [Parallel Pipeline: Divide and
-  Conquer](http://zguide.zeromq.org/py:all#Divide-and-Conquer)
+  Conquer](https://zguide.zeromq.org/docs/chapter1/#Divide-and-Conquer)
 
 ### 2.1. Request-Reply
 
@@ -219,7 +219,7 @@ ausgeben.
 Neben dem dritten Beispiel liefert die Beschreibung in
 
 - [Parallel Pipeline: Divide and
-  Conquer](http://zguide.zeromq.org/py:all#Divide-and-Conquer)
+  Conquer](https://zguide.zeromq.org/docs/chapter1/#Divide-and-Conquer)
 
 ein nützliches Beispiel, an dem Sie sich orientieren können.
 
