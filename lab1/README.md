@@ -155,7 +155,7 @@ wie folgt:
 
 ```bash
 cd ~/git/vs2lab/lab1
-pipenv run jupyter notebook
+pipenv run jupyter notebook --ip 127.0.0.1
 ```
 
 #### 2.3.1. Zwei separate Notebooks
@@ -252,20 +252,6 @@ deren Abfolge festlegen.
   Markdown.
 
 ### 3.3 Tipps
-
--  Jupyter Notebook auf LKIT Poolrechner
-    - Problem: Jupyter Server bricht beim Start ab mit Fehlermeldung "Cannot assign requested address".
-        - Lösung: Aufruf mit ``pipenv run jupyter notebook --ip 127.0.0.1``
-    - Problem: Server startet aber Notebook bekommt keine Verbindung
-        - Lösung: **Chromium** Browser verwenden (statt z.B. Firefox)  
-
- </br>
- 
--  Problem: Beim Ausführen des Unittests tritt der Fehler auf " ResourceWarning: unclosed socket ..
- ConnectionRefusedError: [Errno 11] Connection refused .. "  
-      - Lösung: stellen Sie Ihrer VM mindestens 2 CPUs zur Verfügung
-
-
 
 ... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
