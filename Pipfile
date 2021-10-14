@@ -9,6 +9,7 @@ rpyc = "*"
 zmq = "*"
 ipython = "*"
 jupyter = "*"
+jupyter_server = "*"
 ipyparallel = "*"
 
 [dev-packages]
