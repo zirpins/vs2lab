@@ -24,14 +24,14 @@ Das Labor wird im LKIT Rechner-Pool (Li 137) unterstützt. Die Laborplattform ka
 
 Alle Komponenten lassen sich auf den gängigen Plattformen relativ einfach installieren und sind z.T. schon standardmäßig vorhanden. Einige Tipps zur Installation folgen unten.
 
-**NEU im Wintersemester 2021**
+### NEU im Wintersemester 2021
 
 Im Wintersemester 2021 wird eine neue virtualisierte Laborumgebung unterstützt, die sie leicht auf dem eigenen Rechner nutzen können. Die Lösung basiert auf der freien IDE [Visual Studio Code (VS Code)](https://code.visualstudio.com), die lokal auf dem Rechner installiert wird. Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung wird ein integrierter Docker Container verwendet. Dadurch braucht die Laufzeitumgebung des Labors nicht lokal auf ihrem System installiert zu werden.
 
-  - Microsoft beschreibt hier [Grundlagen zu Python in VS Code](https://code.visualstudio.com/docs/languages/python).
-  - Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung in VS Code verwenden wir die Erweiterung [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-  - Die Lösung setzt eine lokale Installation von Docker [Docker](https://www.docker.com) voraus.
-    - Eine einfache Installation kann mit [Docker Desktop](https://www.docker.com/products/docker-desktop) erfolgen.
+- Microsoft beschreibt hier [Grundlagen zu Python in VS Code](https://code.visualstudio.com/docs/languages/python).
+- Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung in VS Code verwenden wir die Erweiterung [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+- Die Lösung setzt eine lokale Installation von Docker [Docker](https://www.docker.com) voraus.
+  - Eine einfache Installation kann mit [Docker Desktop](https://www.docker.com/products/docker-desktop) erfolgen.
 
 Installieren sie zunächst "Docker Desktop" und "Visual Studio Code" auf ihrem Rechner und starten sie beide Programme. Installieren sie dann in VS Code die Erweiterung "Remote Containers". Die Konfiguration der Laufzeitumgebung ist Teil des Labor-Repository. Nachdem das Labor Repository mit git kopiert wurde, wird in VSCode automatisch ein passender Docker Container dafür erzeugt (näheres dazu später).
 
