@@ -18,7 +18,7 @@ Allgemeine **Ziele** dieses Labors:
 
 Sie haben in der [Vorbereitung von Aufgabe1](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master/lab1#1-vorbereitung) bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter eingerichtet. Optimalerweise haben sie dies mit VS Code und der Remote Containers Erweiterung realisiert.
 
-In diser Aufgabe brauchen wir noch eine weitere Komponente:
+In dieser Aufgabe brauchen wir noch eine weitere Komponente:
 
 - **Redis** (ein verbreiteter NOSQL Key-Value-Datastore)
 
