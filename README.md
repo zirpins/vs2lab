@@ -24,9 +24,9 @@ Das Labor wird im LKIT Rechner-Pool (Li 137) unterstützt. Die Laborplattform ka
 
 Alle Komponenten lassen sich auf den gängigen Plattformen relativ einfach installieren und sind z.T. schon standardmäßig vorhanden. Einige Tipps zur Installation folgen unten.
 
-### NEU im Wintersemester 2021
+### Virtualisierte Laborumgebung
 
-Im Wintersemester 2021 wird eine neue virtualisierte Laborumgebung unterstützt, die sie leicht auf dem eigenen Rechner nutzen können. Die Lösung basiert auf der freien IDE [Visual Studio Code (VS Code)](https://code.visualstudio.com), die lokal auf dem Rechner installiert wird. Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung wird ein integrierter Docker Container verwendet. Dadurch braucht die Laufzeitumgebung des Labors nicht lokal auf ihrem System installiert zu werden.
+Zum leichten Einstieg wird eine virtualisierte Laborumgebung unterstützt. Die Lösung basiert auf der freien IDE [Visual Studio Code (VS Code)](https://code.visualstudio.com), die lokal auf dem Rechner installiert wird. Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung wird ein integrierter Docker Container verwendet. Dadurch braucht die Laufzeitumgebung des Labors nicht lokal auf ihrem System installiert zu werden.
 
 - Microsoft beschreibt hier [Grundlagen zu Python in VS Code](https://code.visualstudio.com/docs/languages/python).
 - Zur Bereitstellung einer vorkonfigurierten Laufzeitumgebung in VS Code verwenden wir die Erweiterung [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
@@ -143,7 +143,7 @@ Bei Bedarf können Details in den ``pipenv`` Docs nachgelesen werden:
 
 #### 2.4.2. IDEs
 
-Im Labor wird keine explizite Entwicklungsumgebung (IDE) für Python Skripte vorgeschrieben (und auch nicht dringend benötigt - es reicht im Prinzip ein Editor). Wir empfehlen und unterstützen aber die Nutzung von VS Code mit der Remote Comtainers Erweiterung. Einige alternative Möglichkeiten wären:
+Im Labor wird keine explizite Entwicklungsumgebung (IDE) für Python Skripte vorgeschrieben (und auch nicht dringend benötigt - es reicht im Prinzip ein Editor). **Wir empfehlen und unterstützen aber die Nutzung von VS Code mit der Remote Comtainers Erweiterung**. Einige alternative Möglichkeiten wären:
 
 - [PyCharm](https://www.jetbrains.com/pycharm/) (auch im Pool LKIT vorhanden), hat u.a. einen sehr nützlichen Debugger.
 - [Atom](https://atom.io) (auch im Pool LKIT vorhanden)
