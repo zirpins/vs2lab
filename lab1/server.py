@@ -1,9 +1,12 @@
-import socket
+"""
+Simple tcp server
+"""
 
-import constCS
+import socket
+import const_cs
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((constCS.HOST, constCS.PORT))
+s.bind((const_cs.HOST, const_cs.PORT))
 s.listen(1)
 
 (connection, address) = s.accept()  # returns new socket and address of client

@@ -1,3 +1,7 @@
+"""
+Simple client server unit test
+"""
+
 import logging
 import threading
 import unittest
@@ -9,6 +13,7 @@ lab_logging.setup(stream_level=logging.INFO)
 
 
 class TestEchoService(unittest.TestCase):
+    """The test"""
     _server = clientserver.Server()  # create single server in class variable
     _server_thread = threading.Thread(target=_server.serve)  # define thread for running server
 
@@ -21,6 +26,7 @@ class TestEchoService(unittest.TestCase):
         self.client = clientserver.Client()  # create new client for each test
 
     def test_srv_get(self):  # each test_* function is a test
+        """Test simple call"""
         msg = self.client.call("Hello VS2Lab")
         self.assertEqual(msg, 'Hello VS2Lab*')
 
@@ -29,7 +35,7 @@ class TestEchoService(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        cls._server._serving = False  # break out of server loop
+        cls._server._serving = False  # break out of server loop. pylint: disable=protected-access
         cls._server_thread.join()  # wait for server thread to terminate
 
 
