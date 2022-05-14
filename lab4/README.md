@@ -166,6 +166,8 @@ rekursive Variante zu implementieren.**
   Alternativ kann die Implementierung endrekursiv erfolgen, dann sendet der
   letzte Knoten die Antwort direkt zum ursprünglichen Client zurück.  
 
+- Vereinzelt sind Probleme des Channels bzw. Redis-Servers nach fehlerhaften Requests berichtet worden. Diese ließen sich durch Neustart des Servers beheben.
+
 ... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
 ### 3.4 Abgabe
