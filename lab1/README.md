@@ -43,7 +43,7 @@ Bei Problemen siehe Troubleshooting im [VS2lab README](https://iz-gitlab-01.hs-k
 
 ### 1.3. Python Umgebung installieren
 
-Wechseln Sie in das Verzeichnis des Repositories und installieren Sie die vorgegebenen Packages in eine virtuelle Umgebung für Python.
+Wechseln Sie in das Verzeichnis des Repositories und installieren Sie die vorgegebenen Packages in eine virtuelle Umgebung für Python. In Visual Studio Code tun Sie dies bitte im Remote Container (d.h. Sie führen für das VS Code Projekt vorher "Reopen in Container" aus, zu finden im grünen Menü in der unteren linken Ecke des Fensters).
 
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
