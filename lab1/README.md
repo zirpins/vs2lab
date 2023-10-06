@@ -36,10 +36,10 @@ Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus de
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
 cd ~/git
-git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
+git clone https://github.com/zirpins/vs2lab.git
 ```
 
-Bei Problemen siehe Troubleshooting im [VS2lab README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-tipps-und-troubleshooting)
+Bei Problemen siehe Troubleshooting im [VS2lab README](https://github.com/zirpins/vs2lab#25-tipps-und-troubleshooting)
 
 ### 1.3. Python Umgebung installieren
 
