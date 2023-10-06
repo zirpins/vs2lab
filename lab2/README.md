@@ -26,7 +26,7 @@ Wenn sie VS Code mit Remote Container verwenden, ist Redis schon vorhanden. Orie
 
 ### 1.2. Projekt clonen und/oder aktualisieren
 
-Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac)
+Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner (alle Beispiele für Linux/Mac)
 
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
