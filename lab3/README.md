@@ -24,8 +24,7 @@ Für diese Aufgabe werden keine neuen Installationen benötigt.
 
 ### 1.2. Projekt aktualisieren
 
-Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus
-dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
+Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner (alle Beispiele für Linux/Mac):
 
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
