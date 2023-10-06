@@ -6,8 +6,6 @@ Das VS2Lab dient zur praktischen Veranschaulichung von Prinzipien verteilter Sof
 
 Die Laborthemen orientieren sich an der inhaltlichen Struktur der Vorlesung VS2. Die Laborarbeit beinhaltet zunächst jeweils die Analyse gegebener Beispiele für einzelne Themenbereiche. Basierend darauf werden eigenständige Lösungen entwickelt.
 
-Die Abgabe der Teilaufgaben erfolgt im [ILIAS Kurs 'Verteilte Systeme 2 Labor'](https://ilias.hs-karlsruhe.de/goto.php?target=crs_307307). Von dort erreichen sie auch die zugehörige Microsoft Teams Instanz des Labors in der Microsoft 365 Domäne der Hochschule. In Teams sind die genauen Regelungen der Abgabe und Abnahme durch die Dozenten zu finden.
-
 ---
 
 **Hinweis**: Das Labor Repository wird laufend weiterentwickelt und aktualisiert. Es empfiehlt sich daher, das Labor als Git Repository zu belassen und regelmäßig per ``$ git pull`` aktuell zu halten.
@@ -16,7 +14,7 @@ Die Abgabe der Teilaufgaben erfolgt im [ILIAS Kurs 'Verteilte Systeme 2 Labor'](
 
 ## 2. Voraussetzungen
 
-Das Labor wird im LKIT Rechner-Pool (Li 137) unterstützt. Die Laborplattform kann aber auch leicht auf dem eigenen Rechner eingerichtet werden. Dazu gehört:
+Das Labor wird im Rechner-Pool unterstützt. Die Laborplattform kann aber auch leicht auf dem eigenen Rechner eingerichtet werden. Dazu gehört:
 
 - die Git Versionsverwaltung
 - eine Laufzeitplattform mit Python und Redis
@@ -44,7 +42,7 @@ Das Labor nutzt die **Git** Versionsverwaltung und den **GitLab** Dienst zur Ber
 Wenn ``git`` vorhanden ist, dann kopieren Sie das Labor Repository innerhalb eines Terminals wie folgt (aus dem lokalen Netz der Hochschule oder über VPN, das folgende Beispiel gilt für Linux/Mac):
 
 ```bash
-git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
+git clone https://github.com/zirpins/vs2lab.git
 ```
 
 ### 2.2. Laufzeitplattform
@@ -192,12 +190,12 @@ Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öf
 
 #### Proxy
 
-- Die Installation von Python Dependencies erfordert i.d.R. eine offene Internetverbindung. Die Rechner im LKIT-Pool sind entsprechend konfiguriert.
+- Die Installation von Python Dependencies erfordert i.d.R. eine offene Internetverbindung. Die Rechner im Pool sind entsprechend konfiguriert.
 - Verwenden sie im Hochschulnetz möglichst HsKA-Open.
 
 #### GIT
 
-- Das Repository kann auch per ``ssh`` 'gecloned' werden. Hierzu benötigen Sie ein Benutzerkonto auf dem GitLab Server und müssen dort einen Schlüssel hinterlegen.
+- Das Repository kann auch per ``ssh`` 'gecloned' werden. Hierzu benötigen Sie ein Benutzerkonto auf dem Git Server und müssen dort einen Schlüssel hinterlegen.
 
 #### pipenv
 
@@ -207,7 +205,7 @@ Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öf
 
 #### docker
 
-... to be continued.
+- Die Nutzung von Docker im Rechner-Pool erfordert eine individuelle Freischaltung. Bitte melden Sie sich bei einem Tutor/Dozenten.
 
 ## 3. Aufgaben
 
