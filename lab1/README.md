@@ -31,7 +31,7 @@ Wir empfehlen die Verwendung von Visual Studio Code mit der Remote Containers Er
 
 ### 1.2. Projekt clonen
 
-Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac)
+Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner (alle Beispiele für Linux/Mac)
 
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
