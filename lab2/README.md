@@ -16,13 +16,13 @@ Allgemeine **Ziele** dieses Labors:
 
 ### 1.1. Software installieren
 
-Sie haben in der [Vorbereitung von Aufgabe1](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master/lab1#1-vorbereitung) bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter eingerichtet. Optimalerweise haben sie dies mit VS Code und der Remote Containers Erweiterung realisiert.
+Sie haben in der [Vorbereitung von Aufgabe1](https://github.com/zirpins/vs2lab/tree/main/lab1#1-vorbereitung) bereits eine Umgebung mit Git, Python 3, Pipenv, IDE/Editor und Jupyter eingerichtet. Optimalerweise haben sie dies mit VS Code und der Remote Containers Erweiterung realisiert.
 
 In dieser Aufgabe brauchen wir noch eine weitere Komponente:
 
 - **Redis** (ein verbreiteter NOSQL Key-Value-Datastore)
 
-Wenn sie VS Code mit Remote Container verwenden, ist Redis schon vorhanden. Orientieren Sie sich zur Einrichtung der Umgebung an der [Beschreibung im VS2lab README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#222-redis-erst-ab-aufgabe-2).
+Wenn sie VS Code mit Remote Container verwenden, ist Redis schon vorhanden. Orientieren Sie sich zur Einrichtung der Umgebung an der [Beschreibung im VS2lab README](https://github.com/zirpins/vs2lab/blob/main/README.md#222-redis-erst-ab-aufgabe-2).
 
 ### 1.2. Projekt clonen und/oder aktualisieren
 
@@ -31,7 +31,7 @@ Erstellen Sie eine Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus de
 ```bash
 mkdir -p ~/git # Verzeichnis für Git Projekte (optional)
 cd ~/git
-git clone https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab.git
+git clone https://github.com/zirpins/vs2lab.git
 ```
 
 Falls schon vorhanden aktualisieren Sie das Repository wie folgt:
@@ -41,7 +41,7 @@ cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git pull
 ```
 
-Bei Problemen siehe [Troubleshooting im VS2lab README](https://iz-gitlab-01.hs-karlsruhe.de/IWI-I/vs2lab/tree/master#252-tipps-und-troubleshooting).
+Bei Problemen siehe [Troubleshooting im VS2lab README](https://github.com/zirpins/vs2lab/blob/main/README.md#25-tipps-und-troubleshooting).
 
 ### 1.3. Python-Umgebung installieren
 
