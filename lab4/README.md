@@ -24,8 +24,8 @@ redis-server
 
 ### 1.2. Projekt aktualisieren
 
-Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner aus
-dem lokalen Netz der Hochschule oder über VPN (alle Beispiele für Linux/Mac):
+Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner 
+(alle Beispiele für Linux/Mac):
 
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
@@ -65,7 +65,7 @@ Verzeichnis `vs2lab/lab4/chord`. Hier sind zwei Skripte interessant:
 
 Die Klasse ChordNode verwendet das `lab_channel` Framework, [das wir schon aus
 Aufgabe zwei
-kennen](https://iwi-i-gitlab-1.hs-karlsruhe.de:2443/zich0001/vs2lab/tree/master/lab2#221-kommunikation-per-lab_channel).
+kennen](https://github.com/zirpins/vs2lab/tree/main/lab2#221-kommunikation-per-lab_channel).
 Hier wird *Redis* (eigentlich ein (NOSQL) Key-Value-Store) als
 Message-Oriented-Middleware verwendet.
 
