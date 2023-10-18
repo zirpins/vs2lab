@@ -14,8 +14,11 @@ lab_logging.setup(stream_level=logging.INFO)
 
 class TestEchoService(unittest.TestCase):
     """The test"""
+
     _server = clientserver.Server()  # create single server in class variable
-    _server_thread = threading.Thread(target=_server.serve)  # define thread for running server
+    _server_thread = threading.Thread(
+        target=_server.serve
+    )  # define thread for running server
 
     @classmethod
     def setUpClass(cls):
@@ -27,17 +30,19 @@ class TestEchoService(unittest.TestCase):
 
     def test_srv_get(self):  # each test_* function is a test
         """Test simple call"""
-        msg = self.client.call("Hello VS2Lab")
-        self.assertEqual(msg, 'Hello VS2Lab*')
+        msg = self.client._call("Hello VS2Lab")
+        self.assertEqual(msg, "Hello VS2Lab*")
 
     def tearDown(self):
         self.client.close()  # terminate client after each test
 
     @classmethod
     def tearDownClass(cls):
-        cls._server._serving = False  # break out of server loop. pylint: disable=protected-access
+        cls._server._serving = (
+            False  # break out of server loop. pylint: disable=protected-access
+        )
         cls._server_thread.join()  # wait for server thread to terminate
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
