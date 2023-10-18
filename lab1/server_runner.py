@@ -4,7 +4,7 @@ from lab1.clientserver import Server
 
 """Simple server example."""
 
-s = Server(big=True)
+s = Server(entries=500)
 s.serve()
 time.sleep(100)
 s.stop()

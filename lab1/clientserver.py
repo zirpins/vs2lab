@@ -12,6 +12,7 @@ from lab1.phonebook_helper import get_phonebook, generate_random_phonebook_entri
 
 CMD_GET = "GET"
 CMD_GETALL = "GETALL"
+UNKNOWN_ENTRY_REPLY = "Name not in addressbook."
 
 lab_logging.setup(stream_level=logging.INFO)  # init loging channels for the lab
 
@@ -23,7 +24,7 @@ class Server:
 
     _logger = logging.getLogger("vs2lab.lab1.clientserver.Server")
 
-    def __init__(self, big: bool = False):
+    def __init__(self, entries: int = None):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.setsockopt(
             socket.SOL_SOCKET, socket.SO_REUSEADDR, 1
@@ -32,8 +33,11 @@ class Server:
         self.sock.settimeout(3)  # time out in order not to block forever
         self._logger.info("Server bound to socket " + str(self.sock))
         self._addressbook = get_phonebook()
-        if big:
-            self._addressbook.update(generate_random_phonebook_entries(500))
+        # add further entries if needed
+        if entries:
+            self._addressbook.update(
+                generate_random_phonebook_entries(entries - len(self._addressbook))
+            )
         self._serving = False
         self._serving_thread = None
 
@@ -107,7 +111,7 @@ class Server:
             return self._addressbook[name]
         else:
             self._logger.info("Server did not find " + name + " in addressbook.")
-            return "Name not in addressbook."
+            return UNKNOWN_ENTRY_REPLY
 
     def _getall(self) -> str:
         out = ""

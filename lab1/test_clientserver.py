@@ -3,45 +3,41 @@ Simple client server unit test
 """
 
 import logging
-import threading
 import unittest
 
-import clientserver
 from context import lab_logging
+from lab1.clientserver import Server, Client, UNKNOWN_ENTRY_REPLY
+from lab1.phonebook_helper import get_phonebook
 
 lab_logging.setup(stream_level=logging.INFO)
 
 
 class TestEchoService(unittest.TestCase):
-    """The test"""
+    """The tests"""
 
-    _server = clientserver.Server()  # create single server in class variable
-    _server_thread = threading.Thread(
-        target=_server.serve
-    )  # define thread for running server
+    def test_srv_get(self):
+        """Test simple search of known names"""
+        names = list(get_phonebook().keys())
+        with Server() as srv:
+            with Client() as cl:
+                for name in names:
+                    self.assertNotEqual(UNKNOWN_ENTRY_REPLY, cl.get(name))
 
-    @classmethod
-    def setUpClass(cls):
-        cls._server_thread.start()  # start server loop in a thread (called only once)
+    def test_srv_get_error(self):
+        """Test simple search of unknown names"""
+        names = ["We", "Must", "Not", "Exist"]
+        with Server() as srv:
+            with Client() as cl:
+                for name in names:
+                    self.assertEqual(UNKNOWN_ENTRY_REPLY, cl.get(name))
 
-    def setUp(self):
-        super().setUp()
-        self.client = clientserver.Client()  # create new client for each test
-
-    def test_srv_get(self):  # each test_* function is a test
-        """Test simple call"""
-        msg = self.client._call("Hello VS2Lab")
-        self.assertEqual(msg, "Hello VS2Lab*")
-
-    def tearDown(self):
-        self.client.close()  # terminate client after each test
-
-    @classmethod
-    def tearDownClass(cls):
-        cls._server._serving = (
-            False  # break out of server loop. pylint: disable=protected-access
-        )
-        cls._server_thread.join()  # wait for server thread to terminate
+    def test_srv_get_all(self):
+        """Test simple search of ALL known names"""
+        number_of_entries = 500
+        with Server(entries=number_of_entries) as srv:
+            with Client() as cl:
+                # all lines except the last one are entries, separated by \n
+                self.assertEqual((len(cl.get_all().split("\n")) - 1), number_of_entries)
 
 
 if __name__ == "__main__":
