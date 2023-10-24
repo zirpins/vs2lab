@@ -4,6 +4,7 @@ Client and server using classes
 
 import logging
 import socket
+import time
 
 import const_cs
 from context import lab_logging
@@ -16,6 +17,8 @@ class Server:
     """ The server """
     _logger = logging.getLogger("vs2lab.lab1.clientserver.Server")
     _serving = True
+
+    _database = {'annette':1234,'jack': 4098, 'peter': 5678 , 'sape': 4139}
 
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -41,6 +44,40 @@ class Server:
                 pass  # ignore timeouts
         self.sock.close()
         self._logger.info("Server down.")
+    
+    def start_phone_book(self):
+        """Start Server to send phone book records"""
+        self.sock.listen(1)
+        while self._serving:
+            try:
+                (connection, address) = self.sock.accept()
+                while True:
+                    data = connection.recv(1024)
+                    if not data:
+                        break
+                    message = data.decode('ascii')
+                    if message == "getAll" :
+                        # task recieved to print out all records of database
+                        for k, v in self._database.items():
+                            time.sleep(0.1)
+                            message_out = "Name: " + str(k) + " Nummer:" + str(v)
+                            connection.send(message_out.encode('ascii'))
+                        time.sleep(0.1)
+                        connection.send("end".encode("ascii"))
+                    else :
+                        if message not in self._database:
+
+                            # name not in the database
+                            connection.send("end".encode("ascii"))
+                        else:
+                            # name in the database, ready to send
+                            message_out = "Name: " + str(message) + " Nummer: " + str(self._database[message])
+                            connection.send(message_out.encode("ascii"))
+                connection.close()
+            except socket.timeout:
+                pass
+        self.sock.close()
+        print("Server down.")
 
 
 class Client:
@@ -61,6 +98,33 @@ class Client:
         self.sock.close()  # close the connection
         self.logger.info("Client down.")
         return msg_out
+
+    def get(self, name):
+        """ Get a phone book record"""
+        self.sock.send(name.encode('ascii'))
+        data = self.sock.recv(1024)
+        message = data.decode('ascii')
+        if (message == "end"):
+            print("Error404: Name not found")
+        else:
+            print(message)
+        self.sock.close()
+        print("Client down.")
+    
+    def get_all(self):
+        """ Get all phone book records"""
+        name = "getAll"
+        self.sock.send(name.encode('ascii'))
+        while True:
+            data = self.sock.recv(1024)
+            message = data.decode('ascii')
+            if (message == "end"):
+                break
+            else:
+                print(message)
+        self.sock.close()
+        print("Client down.")
+
 
     def close(self):
         """ Close socket """
