@@ -1,7 +1,7 @@
 """
 Client and server using classes
 """
-# test commit
+
 import logging
 import socket
 
