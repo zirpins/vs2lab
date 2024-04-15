@@ -16,6 +16,7 @@ class Server:
     """ The server """
     _logger = logging.getLogger("vs2lab.lab1.clientserver.Server")
     _serving = True
+    _phonebook = dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -35,12 +36,36 @@ class Server:
                     data = connection.recv(1024)  # receive data from client
                     if not data:
                         break  # stop if client stopped
-                    connection.send(data + "*".encode('ascii'))  # return sent data plus an "*"
+                    temp = data.decode('ascii').strip().split() 
+                    
+                    command = temp[0]
+
+                    if len(temp) == 2:
+                        params = temp[1]
+
+                    if command == "GET":
+                        result = self.get(params)
+                        connection.send(result.encode('ascii'))
+                    elif command == "GETALL":
+                        result = self.get_all()
+                        connection.send(result.encode('ascii'))
+                    else:
+                        connection.send(data + "*".encode('ascii'))  # return sent data plus an "*"
                 connection.close()  # close the connection
             except socket.timeout:
                 pass  # ignore timeouts
         self.sock.close()
         self._logger.info("Server down.")
+
+    def get(self, name):
+        number = self._phonebook.get(name)
+        if number is not None:
+            return str(number)
+        else:
+            return "Entry not found"
+
+    def get_all(self):
+        return ', '.join([f"{name}: {number}" for name, number in self._phonebook.items()])
 
 
 class Client:
@@ -61,6 +86,25 @@ class Client:
         self.sock.close()  # close the connection
         self.logger.info("Client down.")
         return msg_out
+
+    def get(self, name):
+
+        """ Get entry from server """
+        command = "GET " + name 
+        self.sock.send(command.encode('ascii'))  # send command to server
+        data = self.sock.recv(1024)  # receive the response
+        self.sock.close()  # close the connection
+        self.logger.info("Client down.")
+        return data.decode('ascii')  # return the result
+
+    def get_all(self):
+        """ Get all entries from server """
+        command = "GETALL"
+        self.sock.send(command.encode('ascii'))  # send command to server
+        data = self.sock.recv(1024)  # receive the response
+        self.sock.close()  # close the connection
+        self.logger.info("Client down.")
+        return data.decode('ascii')  # return the result
 
     def close(self):
         """ Close socket """
