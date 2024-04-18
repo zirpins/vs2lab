@@ -41,7 +41,23 @@ class TestEchoService(unittest.TestCase):
     def test_jack(self):
         msg = self.client.get("jack")
         self.assertEqual(msg, '4098')  
+
+    def test_get_all(self):
+        msg = self.client.get_all()
+        self.assertEqual(msg, 'sape: 4139, guido: 4127, jack: 4098')
+
+    def test_no_entry(self):
+        msg = self.client.get("Tom")
+        self.assertEqual(msg, 'Entry not found')
+
+    def test_jack_whitespace(self):
+        msg = self.client.get("     jack   ")
+        self.assertEqual(msg, '4098') 
  
+    def test_whitespace(self):
+        msg = self.client.get(" ")
+        self.assertEqual(msg, 'Entry not found') 
+
     def tearDown(self):
         self.client.close()  # terminate client after each test
 
