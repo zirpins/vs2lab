@@ -29,27 +29,31 @@ class Client:
         self.chan.leave('client')
 
     def append(self, data, db_list, clientAck, clientCallback):
-    # Define a function to handle receiving response from server in a separate thread
+        # Function to wait for response from Server
+
         def waitForMessage():
             msgrcv = self.chan.receive_from(self.server) # Wait for list
             clientCallback(msgrcv[1])
-    
-    # Send request to server
+
+        # Send request to server
         msglst = (constRPC.APPEND, data, db_list)  # message payload
         self.chan.send_to(self.server, msglst)  # send msg to server
     
-    # Receive Server Ack
+        # Receive Server Ack
         msgrcv = self.chan.receive_from(self.server)  # wait for response
-        self.serverIsBusy = True
-        clientAck(msgrcv)
+        if(msgrcv[1]=="Ack -> Received Request"):
+            self.serverIsBusy = True
+            clientAck(msgrcv)
     
-    # Open new thread to wait for new list from server
-        thread = threading.Thread(target=waitForMessage)
-        thread.start()
+            # Open new thread which waits for the new list from server with waitForMessage
+            thread = threading.Thread(target=waitForMessage)
+            thread.start()
     
-    # Main thread returns while the new thread waits for server response
-        return
-
+            # Main thread returns while the new thread waits for server response
+            return
+        else: 
+            print("Did not receive Ack from Server.")
+            return
 
 class Server:
     def __init__(self):
@@ -70,7 +74,8 @@ class Server:
                 client = msgreq[0]  # see who is the caller
                 msgrpc = msgreq[1]  # fetch call & parameters
                 if constRPC.APPEND == msgrpc[0]:  # check what is being requested
-                    self.chan.send_to({client}, "Received your message")
+                    # Send ack message
+                    self.chan.send_to({client}, "Ack -> Received Request")
                     result = self.append(msgrpc[1], msgrpc[2])  # do local call
                     time.sleep(10)
                     self.chan.send_to({client}, result)  # return response
