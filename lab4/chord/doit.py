@@ -29,10 +29,31 @@ class DummyChordClient:
         self.channel.bind(self.node_id)
 
     def run(self):
-        print("Implement me pls...")
+        existing_nodes = {i.decode() for i in list(self.channel.channel.smembers('node'))}
+        target_node = list(existing_nodes)[0]
+        key_to_lookup = 42
+
+        self.channel.send_to([target_node], (constChord.LOOKUP_REQ, key_to_lookup))
+        print(f"Client sent LOOKUP_REQ for key {key_to_lookup} to node {target_node}.")
+
+        response = self.channel.receive_from_any()
+        sender, message = response
+        if message[0] == constChord.LOOKUP_REP:
+            successor_node = message[1]
+            print(f"Lookup result: key {key_to_lookup} is handled by node {successor_node}.")
+        else:
+            print(f"Unexpected message from node {sender}: {message}")
+
         self.channel.send_to(  # a final multicast
             {i.decode() for i in list(self.channel.channel.smembers('node'))},
             constChord.STOP)
+
+        '''
+        self.channel.send_to(  # a final multicast
+            {i.decode() for i in list(self.channel.channel.smembers('node'))},
+            constChord.STOP)
+        firstChord = (list(self.channel.channel.smembers('node'))[0])
+        self.channel.send_to(firstChord, constChord.LOOKUP_REQ)'''
 
 
 def create_and_run(num_bits, node_class, enter_bar, run_bar):

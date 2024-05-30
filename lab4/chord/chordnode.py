@@ -97,22 +97,29 @@ class ChordNode:
         self.finger_table[0] = self.node_list[self.node_list.index(self.node_id) - 1]  # Predecessor
         self.finger_table[1:] = [self.finger(i) for i in range(1, self.n_bits + 1)]  # Successors
 
-    def local_successor_node(self, key) -> int:
+    def local_successor_node(currentNode, key) -> int:
         """
         Locate successor of a key in local finger table
         :param key: key to be located
         :return: located node name
         """
-        if self.in_between(key, self.finger_table[0] + 1, self.node_id + 1):  # key in (FT[0],self]
-            return self.node_id  # node is responsible
-        elif self.in_between(key, self.node_id + 1, self.finger_table[1]):  # key in (self,FT[1]]
-            return self.finger_table[1]  # successor responsible
-        for i in range(1, self.n_bits):  # go through rest of FT
-            if self.in_between(key, self.finger_table[i], self.finger_table[(i + 1) ]):
-                return self.finger_table[i]  # key in [FT[i],FT[i+1])
-        if self.in_between(key, self.finger_table[-1], self.finger_table[0] + 1): # key outside FT
-            return self.finger_table[-1]  # key in [FT[-1],FT[0]]
-        assert False # we cannot be here
+
+        #Base case
+        if currentNode.in_between(key, currentNode.finger_table[0] + 1, currentNode.node_id + 1):  # key in (FT[0],self]
+            return currentNode.node_id  # node is responsible
+        #Recursive case
+        else:
+            #Key is in the successor
+            if currentNode.in_between(key, currentNode.node_id + 1, currentNode.finger_table[1]):  # key in (self,FT[1]]
+                return currentNode.local_successor_node(currentNode.finger_table[1], key)  # successor responsible
+            #Key is in one of the finger table nodes
+            for i in range(1, currentNode.n_bits):  # go through rest of FT
+                if currentNode.in_between(key, currentNode.finger_table[i], currentNode.finger_table[(i + 1) ]):
+                    return currentNode.local_successor_node(currentNode.finger_table[i], key)  # key in [FT[i],FT[i+1]) 
+            #Key is in node outside finger table 
+            return currentNode.local_successor_node(currentNode.finger_table[-1], key)  # key in [FT[-1],FT[0]]
+        
+
 
     def enter(self):
         self.channel.bind(str(self.node_id))  # bind current pid
@@ -145,8 +152,10 @@ class ChordNode:
                 self.logger.debug("Node {:04n} received STOP from {:04n}."
                                   .format(self.node_id, int(sender)))
                 break
-
+            
+            #Here we make the lookup request
             if request[0] == constChord.LOOKUP_REQ:  # A lookup request
+                print(request)
                 self.logger.info("Node {:04n} received LOOKUP {:04n} from {:04n}."
                                  .format(self.node_id, int(request[1]), int(sender)))
 
