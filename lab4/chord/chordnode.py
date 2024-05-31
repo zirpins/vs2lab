@@ -97,28 +97,23 @@ class ChordNode:
         self.finger_table[0] = self.node_list[self.node_list.index(self.node_id) - 1]  # Predecessor
         self.finger_table[1:] = [self.finger(i) for i in range(1, self.n_bits + 1)]  # Successors
 
-    def local_successor_node(currentNode, key) -> int:
+    def local_successor_node(self, key) -> int:
         """
         Locate successor of a key in local finger table
         :param key: key to be located
         :return: located node name
         """
 
-        #Base case
-        if currentNode.in_between(key, currentNode.finger_table[0] + 1, currentNode.node_id + 1):  # key in (FT[0],self]
-            return currentNode.node_id  # node is responsible
-        #Recursive case
-        else:
-            #Key is in the successor
-            if currentNode.in_between(key, currentNode.node_id + 1, currentNode.finger_table[1]):  # key in (self,FT[1]]
-                return currentNode.local_successor_node(currentNode.finger_table[1], key)  # successor responsible
-            #Key is in one of the finger table nodes
-            for i in range(1, currentNode.n_bits):  # go through rest of FT
-                if currentNode.in_between(key, currentNode.finger_table[i], currentNode.finger_table[(i + 1) ]):
-                    return currentNode.local_successor_node(currentNode.finger_table[i], key)  # key in [FT[i],FT[i+1]) 
-            #Key is in node outside finger table 
-            return currentNode.local_successor_node(currentNode.finger_table[-1], key)  # key in [FT[-1],FT[0]]
-        
+        if self.in_between(key, self.finger_table[0] + 1, self.node_id + 1):  # key in (FT[0],self]
+            return self.node_id  # node is responsible
+        elif self.in_between(key, self.node_id + 1, self.finger_table[1]):  # key in (self,FT[1]]
+            return self.finger_table[1]  # successor responsible
+        for i in range(1, self.n_bits):  # go through rest of FT
+            if self.in_between(key, self.finger_table[i], self.finger_table[(i + 1) ]):
+                return self.finger_table[i]  # key in [FT[i],FT[i+1])
+        if self.in_between(key, self.finger_table[-1], self.finger_table[0] + 1): # key outside FT
+            return self.finger_table[-1]  # key in [FT[-1],FT[0]]
+        assert False # we cannot be here
 
 
     def enter(self):
@@ -144,6 +139,8 @@ class ChordNode:
             sender: str = message[0]  # Identify the sender
             request = message[1]  # And the actual request
 
+            print(f"Sender: {sender}, Request Content: {request[0]}")
+
             # If sender is a node (that stays in the ring) then update known nodes
             if request[0] != constChord.LEAVE and self.channel.channel.sismember('node', sender):
                 self.add_node(sender)  # remember sender node
@@ -159,13 +156,25 @@ class ChordNode:
                 self.logger.info("Node {:04n} received LOOKUP {:04n} from {:04n}."
                                  .format(self.node_id, int(request[1]), int(sender)))
 
+                print("The current ID is: ", self.node_id)
+
                 # look up and return local successor 
                 next_id: int = self.local_successor_node(request[1])
-                self.channel.send_to([sender], (constChord.LOOKUP_REP, next_id))
 
-                # Finally do a sanity check
-                if not self.channel.exists(next_id):  # probe for existence
-                    self.delete_node(next_id)  # purge disappeared node
+                if(next_id == self.node_id):
+                    self.channel.send_to([sender], (constChord.LOOKUP_REP, next_id))
+
+                    # Finally do a sanity check
+                    if not self.channel.exists(next_id):  # probe for existence
+                        self.delete_node(next_id)  # purge disappeared node
+                else:
+                    print("Other case")
+                    self.channel.send_to([next_id], (constChord.LOOKUP_REQ, request[1]))
+                    print(f"Client sent LOOKUP_REQ for key {request[1]} to node {next_id}.")
+
+                    
+                    
+               
 
             elif request[0] == constChord.JOIN:
                 # Join request (the node was already registered above)
