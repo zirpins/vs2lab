@@ -139,8 +139,6 @@ class ChordNode:
             sender: str = message[0]  # Identify the sender
             request = message[1]  # And the actual request
 
-            print(f"Sender: {sender}, Request Content: {request[0]}")
-
             # If sender is a node (that stays in the ring) then update known nodes
             if request[0] != constChord.LEAVE and self.channel.channel.sismember('node', sender):
                 self.add_node(sender)  # remember sender node
@@ -152,29 +150,28 @@ class ChordNode:
             
             #Here we make the lookup request
             if request[0] == constChord.LOOKUP_REQ:  # A lookup request
-                print(request)
                 self.logger.info("Node {:04n} received LOOKUP {:04n} from {:04n}."
                                  .format(self.node_id, int(request[1]), int(sender)))
-
-                print("The current ID is: ", self.node_id)
+                
+                #Checking if the original sender is part of the request
+                #Otherwise assign a new original sender
+                if(len(request)==2): original_sender = sender
+                else: original_sender = request[2]
 
                 # look up and return local successor 
                 next_id: int = self.local_successor_node(request[1])
 
                 if(next_id == self.node_id):
-                    self.channel.send_to([sender], (constChord.LOOKUP_REP, next_id))
+                    print("Reached the final node")
+                    self.channel.send_to([original_sender], (constChord.LOOKUP_REP, next_id))
 
                     # Finally do a sanity check
                     if not self.channel.exists(next_id):  # probe for existence
                         self.delete_node(next_id)  # purge disappeared node
+            
                 else:
-                    print("Other case")
-                    self.channel.send_to([next_id], (constChord.LOOKUP_REQ, request[1]))
                     print(f"Client sent LOOKUP_REQ for key {request[1]} to node {next_id}.")
-
-                    
-                    
-               
+                    self.channel.send_to([str(next_id)], (constChord.LOOKUP_REQ, request[1], original_sender))
 
             elif request[0] == constChord.JOIN:
                 # Join request (the node was already registered above)
