@@ -81,3 +81,4 @@ if __name__ == "__main__":  # if script is started from command line
     # wait for peer procs to finish
     for peer_proc in children:
         peer_proc.join()
+
