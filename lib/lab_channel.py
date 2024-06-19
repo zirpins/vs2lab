@@ -184,7 +184,7 @@ class Channel:
         :return: None
         """
         # destination_set needs to contain string identifiers
-        assert (type(k) is str for k in destination_set), 'type error'
+        assert all(type(k) is str for k in destination_set), 'type error'
 
         # lookup member id by pid and validate it
         caller: str = self.os_members[os.getpid()]
