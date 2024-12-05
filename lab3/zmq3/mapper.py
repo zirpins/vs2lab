@@ -8,24 +8,14 @@ me = str(sys.argv[1])
 
 context = zmq.Context()
 pull_socket = context.socket(zmq.PULL)
-push_socket = context.socket(zmq.PUSH)
-
-address = ""
-
-match me:
-    case "1":
-        address = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT2
-    case "2":
-        address = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT3
-    case "3":
-        address = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT4
+push_socket1 = context.socket(zmq.PUSH)
+push_socket2 = context.socket(zmq.PUSH)
 
 address5 = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT5;
 address6 = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT6;
 
-push_socket.bind(address)
-push_socket.connect(address5)
-push_socket.connect(address6)
+push_socket1.connect(address5)
+push_socket2.connect(address6)
 
 pull_address = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT1
 
@@ -36,7 +26,10 @@ while True:
     print(f"got line {line}")
     for word in line.split():
         print(f"Sending {word}")
-        push_socket.send(pickle.dumps((word, 1)))
+        if len(word) % 2 == 0:
+            push_socket1.send(pickle.dumps((word, 1)))
+        else:
+            push_socket2.send(pickle.dumps((word, 1)))
 
 
 

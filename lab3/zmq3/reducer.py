@@ -6,10 +6,6 @@ import zmq
 
 import constPipe
 
-address1 = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT2  # 1st task src
-address2 = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT3  # 2nd task src
-address3 = "tcp://" + constPipe.SRC1 + ":" + constPipe.PORT4  # 3rd task src
-
 me = str(sys.argv[1])
 
 self_add = ""
@@ -23,10 +19,6 @@ match me:
 context = zmq.Context()
 pull_socket = context.socket(zmq.PULL)  # create a pull socket
 pull_socket.bind(self_add)
-
-pull_socket.connect(address1)  # connect to task source 1
-pull_socket.connect(address2)  # connect to task source 2
-pull_socket.connect(address3)
 
 time.sleep(1) 
 
