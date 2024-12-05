@@ -109,6 +109,8 @@ Experiment nachverfolgen:
 **Aufgabe Lab3.1:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
 
+**Es kommen immer alle nachrichten eines clients zuerst an, dann die des anderen clients**
+
 ### 2.2. Publish-Subscribe
 
 Mit dem Publish-Subscribe Muster lässt sich *1-n Kommunikation* (ein Sender, n
@@ -134,6 +136,8 @@ cd ~/git/vs2lab/lab3/zmq2 # angenommen hier liegt das vs2lab Repo
 
 **Aufgabe Lab3.2:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
+
+**Beide clients sind zwar auf den server subscribed, aber nur die nachrichten eines bestimmten channels kommen an.**
 
 ### 2.3. Parallel Pipeline
 
@@ -173,6 +177,8 @@ Gehen sie nun wie folgt vor:
 
 **Aufgabe Lab3.3:** Erklären Sie das Verhalten der Systeme in den beiden
 Experimenten.
+
+im ersten Experiment erhält ein worker workloads von mehreren farmern, im zweiten verteilt ein farmer workloads an mehrere worker
 
 ## 3 Aufgabe
 

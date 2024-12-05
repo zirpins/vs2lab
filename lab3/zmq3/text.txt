@@ -1,0 +1,4 @@
+Dies ist der erste Satz.
+Dies ist der zweite Satz.
+Reden ist silber.
+Schweigen ist gold.
