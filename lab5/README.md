@@ -76,11 +76,15 @@ Die Klasse `Process` verwendet wieder das `lab_channel` Framework. Hier wird
 der Gruppe `proc` an, die vom zentralen Channel abgefragt werden kann.
 
 Prozesse führen die Hauptschleife aus, in der sie periodisch in eine gemeinsame
-kritische Sektion eintreten und sich dabei untereinander abstimmen. Sie verfügen
-dazu jeweils über eine logische Uhr, die bei eigenen Aktivitäten oder beim
-Empfang von Nachrichten angepasst wird. Prozesse verfügen zudem über eine
-Warteschlange (Queue) zur Anordnung von Nachrichten zum Ein- und Austritt aus
-der kritischen Sektion, die nach ihren logische Zeitstempeln geordnet sind.
+kritische Sektion eintreten und sich dabei untereinander abstimmen. Dabei wird 
+jedem Prozess ein zufälliges Verhaltensmuster zugeordnet. Neben aktiven Prozessen, 
+die um die kritische Sektion konkurieren, existieren passive Prozesse, die sich 
+lediglich an der Koordination beteiligen. 
+
+Alle Prozesse verfügen jeweils über eine logische Uhr, die bei eigenen Aktivitäten 
+oder beim Empfang von Nachrichten angepasst wird. Prozesse verfügen zudem über 
+eine Warteschlange (Queue) zur Anordnung von Nachrichten zum Ein- und Austritt 
+aus der kritischen Sektion, die nach ihren logische Zeitstempeln geordnet sind.
 
 Die genaue Funktion entnehmen Sie bitte der kommentierten Implementierung.
 
@@ -133,7 +137,8 @@ kontinuierlich weiterarbeiten.
   ignoriert werden.
 - Durch die zufallsbedingte Ausführung des Systems können sich vielfältige
   Situationen ergeben. Führen Sie das Skript mehrfach aus, um die
-  Stabilität zu testen.
+  Stabilität zu testen. Stellen Sie insbesondere sicher, dass Ihre Lösung für 
+  Prozesse mit aktiven und passiven Verhaltensmustern gleichermaßen funktioniert. 
 - Verwenden Sie Log-Ausgaben, die die Funktionsweise Ihres Systems zeigen.
 
 ### 3.3 Tipps
