@@ -282,12 +282,12 @@ eines Teilnehmers) und senden entsprechende Nachrichten an `P_k`. Dann verfährt
 - **Mindestanforderung**
   - Implementieren Sie den *grundlegenden Ablauf* (Zustandsautomaten) des 
     zentralisierten 3PC-Protokolls.
+  - Berücksichtigen Sie die Terminierung des Protokolls nach dem Ausfall von Teilnehmern und zeigen Sie die Funktion anhand von simulierten Abstürzen.
 
 - **Lösungsversuch**
-  - Berücksichtigen Sie die *Terminierung* des Protokolls nach dem Ausfall von 
-    Prozessen.
-  - Verwenden Sie für die Terminierung nach Koordinatorausfall den gezeigten 
-    Ansatz mit einem neuen Koordinator.
+  - Berücksichtigen Sie die Terminierung des Protokolls nach dem Ausfall des Koordinators.
+  - Verwenden Sie für die Terminierung nach Koordinatorausfall den gezeigten Ansatz mit neuem Koordinator.
+    - Achten Sie auf den genauen Protokollablauf mit Wahl und zwei Runden (1. State Update + 2. Entscheidung)
   - Zeigen Sie die Funktion der Terminierung anhand von simulierten Abstürzen.
 
 - **Abgrenzung**
