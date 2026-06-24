@@ -48,7 +48,7 @@ Aktualisieren Sie die Kopie des VS2Lab Repositories auf Ihrem Arbeitsrechner
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 git add . # ggf. eigene Änderungen vormerken
-git commit -m 'update' # ggf eigene Änderungen per Commit festschreiben
+git commit -m 'update' # ggf. eigene Änderungen per Commit festschreiben
 git checkout master # branch auswählen (falls nicht schon aktiv)
 git pull # aktualisieren
 ```
@@ -117,7 +117,7 @@ denn verspätete Koordinator-Nachrichten würden akzeptiert werden.
 
 Die genaue Funktion entnehmen Sie bitte der kommentierten Implementierung.
 
-### 2PC-Anwendung `2pc.py`
+### 2.3 2PC-Anwendung `2pc.py`
 
 Das dritte Skript nutzt die Implementierungen von Koordinator und Teilnehmern
 zum Aufbau eines verteilten Commitment-Systems mit simuliertem Knotenausfall des
@@ -129,7 +129,7 @@ Modul](https://docs.python.org/3.7/library/multiprocessing.html), um Knoten als
 separate Prozesse mittels `Spawn` zu starten, was auch unter Windows
 funktioniert.
 
-### 2.3 Starten des Systems
+### 2.4 Starten des Systems
 
 `2pc.py` baut ein verteiltes System mit einem Koordinator und `n` Teilnehmern auf.
 Zufallsbedingt simuliert das Koordinator-Skript den Absturz durch vorzeitige
@@ -277,7 +277,7 @@ eines Teilnehmers) und senden entsprechende Nachrichten an `P_k`. Dann verfährt
   - Nach dem initialen Abgleich befinden sich alle Teilnehmer im gleichen 
     finalen Zustand.
 
-### 3.2 Aufgabe und Anforderungen kurz und knapp
+### 3.3 Aufgabe und Anforderungen kurz und knapp
 
 - **Mindestanforderung**
   - Implementieren Sie den *grundlegenden Ablauf* (Zustandsautomaten) des 
@@ -294,7 +294,7 @@ eines Teilnehmers) und senden entsprechende Nachrichten an `P_k`. Dann verfährt
   - *Nachrichtenverlust* sowie *multiple Abstürze* können ignoriert werden.
   - Die *Wiederherstellung* ausgefallener Prozesse kann ignoriert werden.
 
-### 3.3 Tipps
+### 3.4 Tipps
 
 - Verwenden Sie die Implementierung des 2PC-Protokolls als Ausgangsbasis.
 - Für die Bestimmung eines neuen Koordinators können Sie eine deterministische 
@@ -303,7 +303,7 @@ eines Teilnehmers) und senden entsprechende Nachrichten an `P_k`. Dann verfährt
 
 ... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
 
-### 3.4 Abgabe
+### 3.5 Abgabe
 
 Die Abgabe erfolgt durch Abnahme durch einen Dozenten. Packen Sie den kompletten 
 Code zudem als Zip-Archiv und laden Sie dieses im ILIAS hoch.
