@@ -1,6 +1,6 @@
-# **Labor 1** - Mehrschicht Architekturen mit Sockets
+# **Labor 1** - Mehrschicht-Architekturen mit Sockets
 
-Im ersten Labor konstruieren wir ein einfaches Client-Server System mit low-level **Sockets** und lernen dabei eine Menge über die Sprache **Python** und den Umgang mit Python-basierten Software Systemen. Die Ziele im einzelnen:
+Im ersten Labor konstruieren wir ein einfaches Client-Server System mit low-level **Sockets** und lernen dabei eine Menge über die Sprache **Python** und den Umgang mit Python-basierten Software Systemen. Die Ziele im Einzelnen:
 
 - Einrichtung der Python Umgebung und erste Erfahrungen mit den Tools
   - Python Editor/IDE, iPython Konsole/REPL, Jupyter Notebooks
@@ -22,12 +22,13 @@ Dabei entsteht ein praktisches Verständnis für **Konzepte verteilter Systeme**
 Bereiten Sie eine Umgebung mit folgenden Komponenten vor:
 
 - Git
+- Docker
 - Python 3
 - Pipenv
 - IDE/Editor
 - Jupyter
 
-Wir empfehlen die Verwendung von Visual Studio Code mit der Remote Containers Erweiterung. Orientieren Sie sich zur Einrichtung der Umgebung an der Beschreibung im VS2Lab README.
+Wir empfehlen die Verwendung von Visual Studio Code mit der Dev Containers Erweiterung (Python, Pipenv und Jupyter sind dann im Container enthalten). Orientieren Sie sich zur Einrichtung der Umgebung an der Beschreibung im [VS2Lab README](../README.md#virtualisierte-laborumgebung).
 
 ### 1.2. Projekt clonen
 
@@ -43,14 +44,14 @@ Bei Problemen siehe Troubleshooting im [VS2lab README](https://github.com/zirpin
 
 ### 1.3. Python Umgebung installieren
 
-Wechseln Sie in das Verzeichnis des Repositories und installieren Sie die vorgegebenen Packages in eine virtuelle Umgebung für Python. In Visual Studio Code tun Sie dies bitte im Remote Container (d.h. Sie führen für das VS Code Projekt vorher "Reopen in Container" aus, zu finden im grünen Menü in der unteren linken Ecke des Fensters).
+Wechseln Sie in das Verzeichnis des Repositories und installieren Sie die vorgegebenen Packages in eine virtuelle Umgebung für Python. In Visual Studio Code tun Sie dies bitte im Dev Container (d.h. Sie führen für den Ordner `vs2lab` vorher „Reopen in Container“ aus, zu finden über das Remote-Symbol in der unteren linken Ecke des Fensters oder in der Befehlspalette als „Dev Containers: Reopen in Container“). Im Container liegt das Repository unter `/workspaces/vs2lab`; verwenden Sie dort diesen Pfad statt `~/git/vs2lab`.
 
 ```bash
 cd ~/git/vs2lab # angenommen hier liegt das vs2lab Repo
 pipenv install
 ```
 
-**Tipp**: In Visual Studio Code können sie sich nun bei der Wahl des Python Interpreters auf die hierbei enstandene virtuelle Umgebung beziehen.
+**Tipp**: In Visual Studio Code können Sie sich nun bei der Wahl des Python Interpreters auf die hierbei entstandene virtuelle Umgebung beziehen.
 
 ### 1.4. Beispielcode für diese Aufgabe
 
@@ -62,6 +63,8 @@ cd lab1
 ```
 
 ## 2 Einführung
+
+> **Direkt loslegen:** Dieser Abschnitt ist ein Einstieg ganz ohne eigene Programmierung. Sie führen vorhandenen Code in verschiedenen Varianten aus (Skripte, interaktive Konsole, Jupyter Notebooks, Unit Test) und testen dabei gleichzeitig Ihre Laborumgebung. Den Code selbst müssen Sie dafür noch nicht im Detail verstehen. Sie können mit diesem Teil also direkt nach dem Setup der Umgebung beginnen – auch schon vor der Vorstellung der Aufgabe.
 
 Das Repository enthält einige Beispiele zum Einstieg in die Aufgabe. Es handelt sich um den **Echo Dienst**, der schon in der Vorlesung kurz vorgestellt wurde. Der Echo Dienst liegt in mehreren Varianten vor, um zu demonstrieren, wie solche Systeme organisiert und benutzt werden können.
 
@@ -80,7 +83,7 @@ cd ~/git/vs2lab/lab1
 pipenv run python server.py
 ```
 
-**Tipp**: wenn sie die virtuelle Umgebung von pipenv in VS Code für den Python Interpreter festlegen, dann können sie `pipenv run` bei der Eingabe weglassen. Das gilt auch für alle weiteren Beispiele.
+**Tipp**: Wenn Sie die virtuelle Umgebung von pipenv in VS Code für den Python Interpreter festlegen (bzw. vorher `pipenv shell` ausführen), dann können Sie `pipenv run` bei der Eingabe weglassen. Das gilt auch für alle weiteren Beispiele.
 
 Wiederholen Sie dies danach für den Client:
 
@@ -99,14 +102,12 @@ Starten Sie eine erste IPython Konsole und rufen Sie den Server-Code auf:
 
 ```bash
 $ pipenv run ipython
-Python 3.7.0 (default, Sep 18 2018, 18:47:22)
-Type 'copyright', 'credits' or 'license' for more information
-IPython 7.0.1 -- An enhanced Interactive Python. Type '?' for help.
+...
 
 In [1]: import clientserver
 
 In [2]: server = clientserver.Server()
-2018-10-14 18:49:22,208 - vs2lab.a1_layers.clientserver.Server - INFO - Server bound to socket <socket.socket fd=11, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 50007)>
+2018-10-14 18:49:22,208 - vs2lab.lab1.clientserver.Server - INFO - Server bound to socket <socket.socket fd=11, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 50007)>
 
 In [3]: server.serve()
 ```
@@ -115,21 +116,19 @@ Starten Sie dann eine zweite IPython Konsole und rufen Sie den Client-Code auf:
 
 ```bash
 $ pipenv run ipython
-Python 3.7.0 (default, Sep 18 2018, 18:47:22)
-Type 'copyright', 'credits' or 'license' for more information
-IPython 7.0.1 -- An enhanced Interactive Python. Type '?' for help.
+...
 
 In [1]: import clientserver
 
 In [2]: client = clientserver.Client()
-2018-10-14 18:52:57,966 - vs2lab.a1_layers.clientserver.Client - INFO - Client connected to socket <socket.socket fd=12, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52682), raddr=('127.0.0.1', 50007)>
+2018-10-14 18:52:57,966 - vs2lab.lab1.clientserver.Client - INFO - Client connected to socket <socket.socket fd=12, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52682), raddr=('127.0.0.1', 50007)>
 
 In [3]: client.call()
 ```
 
 ### 2.3 Echo Socket als Jupyter Notebook
 
-Nun werden zwei Varianten als Jupyter Notebook gezeigt. Starten Sie dazu Jupyter wie folgt:
+Nun werden zwei Varianten als Jupyter Notebook gezeigt. In VS Code können Sie die Notebooks direkt im Editor öffnen und ausführen (als Kernel die pipenv-Umgebung wählen). Alternativ starten Sie Jupyter im Browser wie folgt:
 
 ```bash
 cd ~/git/vs2lab/lab1
@@ -138,7 +137,7 @@ pipenv run jupyter notebook --ip 127.0.0.1
 
 #### 2.3.1. Zwei separate Notebooks
 
-Öffnen Sie zwei Notebooks (Dateien mit Endung ``.ipynb``) wobei sich jeweils ein neuer Browser Tab öffnet:
+Öffnen Sie zwei Notebooks (Dateien mit Endung ``.ipynb``), im Browser jeweils in einem eigenen Tab:
 
 - ``Server.ipynb``
 - ``Client.ipynb``
@@ -149,7 +148,7 @@ Führen Sie danach im Client Notebook alle Zellen bis zur letzten nacheinander a
 
 #### 2.3.2. Client und Server in einem Notebook
 
-ACHTUNG: diese Variante funktioniert nicht unter Windows. Falls Sie Windows verwenden, überspringen Sie dieses Beispiel.
+ACHTUNG: Diese Variante nutzt `os.fork()` und funktioniert daher nicht direkt unter Windows. Im Dev Container (Linux) läuft sie auch auf Windows-Rechnern; ohne Container überspringen Sie dieses Beispiel unter Windows.
 
 Öffnen Sie das Notebook ``Client-Server-Arch.ipynb`` und führen Sie alle Zellen nacheinander aus.
 
@@ -172,7 +171,7 @@ Nun sind Sie an der Reihe. Implementieren Sie den Telefonauskunftdienst, den wir
 
 ### 3.1 Übersicht
 
-Ihre Implementierung soll als 2-Tier Architektur realisiert sein (d.h. ein Prozess für den Auskunft Client mit Benutzerschnittstelle und ein Prozess für den Auskunft Server). Für den Kommunikationskanal verwenden Sie eine TCP-Verbindung über die Socket-Schnittstelle. Der Auskunft-Dienst soll als Anwendungsschicht über der Transportschicht implementiert werden. Die Nutzung des Auskunft-Dienstes soll über eine Auskunft-API Schnittstelle erfolgen (siehe Abbildung). Verwenden sie als Basis der Implementierung das Beispiel Skript `clientserver.py` und erweitern sie es entsprechend der Anforderungen des Auskunftsdienstes.
+Ihre Implementierung soll als 2-Tier Architektur realisiert sein (d.h. ein Prozess für den Auskunft Client mit Benutzerschnittstelle und ein Prozess für den Auskunft Server). Für den Kommunikationskanal verwenden Sie eine TCP-Verbindung über die Socket-Schnittstelle. Der Auskunft-Dienst soll als Anwendungsschicht über der Transportschicht implementiert werden. Die Nutzung des Auskunft-Dienstes soll über eine Auskunft-API Schnittstelle erfolgen (siehe Abbildung). Verwenden Sie als Basis der Implementierung das Beispiel-Skript `clientserver.py` und erweitern Sie es entsprechend der Anforderungen des Auskunftsdienstes.
 
 ![Schichtenarchitektur](img/auskunft_arch.png "Schichtenarchitektur") 
 
@@ -190,12 +189,12 @@ Konzentrieren Sie sich auf den Entwurf und die Implementierung eines Protokolls 
 - Machen Sie die Schritte im Socket-Lebenszyklus durch **Log Ausgaben** in Client und Server Prozess deutlich.
 - Schreiben Sie **Unit Tests** für die Dienstschnittstelle und die Backend-Funktionen.
   - **Für Experten**: verwenden Sie im Test-Case für `GETALL` ein Telefonbuch mit 500 Einträgen
-- Erstellen Sie für die Nutzung Ihres Codes im Client- und Server-Prozess je ein **Jupiter Notebook** mit kurzen Erläuterungen der Anwendungsschritte als Markdown.
+- Erstellen Sie für die Nutzung Ihres Codes im Client- und Server-Prozess je ein **Jupyter Notebook** mit kurzen Erläuterungen der Anwendungsschritte als Markdown.
 
 ### 3.3 Tipps
 
-... stay tuned (Hinweise zur Installation/Konfiguration im Labor-README)
+Hinweise zur Installation und Konfiguration finden Sie im Abschnitt [Tipps und Troubleshooting](../README.md#25-tipps-und-troubleshooting) des VS2Lab README.
 
 ### 3.4 Abgabe
 
-Die Abgabe erfolgt durch Abnahme durch einen Dozenten. Packen Sie den kompletten Code zudem als Zip Archiv und laden Sie dieses im ILIAS hoch.
+Laden Sie den kompletten Code vor dem Abgabetermin als Zip-Archiv in ILIAS hoch. Die Abgabe erfolgt dann durch persönliche Abnahme im Labortermin (Zeitslot über den ILIAS-Buchungspool); ohne Upload erfolgt keine Abnahme. Den Abgabetermin finden Sie im Ablaufplan.
