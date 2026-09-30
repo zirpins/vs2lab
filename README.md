@@ -47,7 +47,7 @@ Das Labor nutzt die **Git** Versionsverwaltung und den **GitHub** Dienst zur Ber
 
 - Siehe [Git Homepage](https://git-scm.com)
 
-Wenn ``git`` vorhanden ist, dann kopieren Sie das Labor-Repository innerhalb eines Terminals wie folgt (das folgende Beispiel gilt für Linux/Mac; unter Windows z.B. in der Git Bash oder PowerShell):
+Wenn ``git`` vorhanden ist, dann klonen Sie das Labor-Repository in einem Terminal wie folgt:
 
 ```bash
 git clone https://github.com/zirpins/vs2lab.git
@@ -75,7 +75,7 @@ Für das Labor muss Python verfügbar sein. Die vorgeschlagene Lösung mit VS Co
 - Python Installer unter [Python Downloads](https://www.python.org/downloads/)
 - Alternativ über einen Package-Manager in [Linux](https://docs.python-guide.org/starting/install3/linux/) oder [MacOS](https://docs.python-guide.org/starting/install3/osx/).
 
-Verwendete Module sind u.a.
+Verwendete Module der Standardbibliothek sind u.a.
 
 - os ([miscellaneous operating system interfaces](https://docs.python.org/3/library/os.html))
 - socket ([low-level networking interface](https://docs.python.org/3/library/socket.html))
@@ -84,7 +84,7 @@ Verwendete Module sind u.a.
 - threading ([thread-based parallelism](https://docs.python.org/3/library/threading.html))
 - multiprocessing ([process-based parallelism](https://docs.python.org/3/library/multiprocessing.html))
 
-Die Pakete müssen nicht separat installiert werden. Wir binden sie bei der Einrichtung der Python-Umgebung ein (siehe unten).
+Diese Module gehören zur Python-Standardbibliothek und müssen nicht installiert werden. Zusätzliche Pakete (u.a. ``redis``, ``rpyc``, ``zmq``, ``ipython``, ``jupyter``) sind im ``Pipfile`` festgelegt und werden bei der Einrichtung der Python-Umgebung eingebunden (siehe 2.3).
 
 #### 2.2.2. Redis (erst ab Aufgabe 2)
 
@@ -123,12 +123,12 @@ Die verwendeten Python-Packages können per ``pip`` installiert werden. Das ist 
 - [Installing Packages](https://packaging.python.org/tutorials/installing-packages/)
 
 Das Laborprojekt verwendet ``pip`` nicht direkt. Module sollen nämlich nicht im gesamten System, sondern nur in einem isolierten Bereich für unser Labor installiert werden (unterschiedliche Projekte brauchen oft unterschiedliche
-Versionen gleicher Module). In Python benutzt man dafür *virtuelle Umgebungen*, die mit ``virtualenv`` erstellt werden. Bei Bedarf können Details hier nachgelesen werden:
+Versionen gleicher Module). In Python benutzt man dafür *virtuelle Umgebungen*, die mit dem Standardmodul ``venv`` oder dem Paket ``virtualenv`` erstellt werden. Bei Bedarf können Details hier nachgelesen werden:
 
 - [Creating Virtual Environments](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
 - [Virtualenv](https://virtualenv.pypa.io/en/stable/)
 
-Das Laborprojekt verwendet auch ``virtualenv`` nicht direkt. Stattdessen wurde ``pipenv`` gewählt. Dadurch wird die Erstellung virtueller Umgebungen und die Installation von Modulen automatisch kombiniert und ist viel einfacher.
+Das Laborprojekt verwendet auch ``venv`` bzw. ``virtualenv`` nicht direkt. Stattdessen wurde ``pipenv`` gewählt. Dadurch wird die Erstellung virtueller Umgebungen und die Installation von Modulen automatisch kombiniert und ist viel einfacher.
 ``pipenv`` muss ggf. installiert werden. Folgen Sie dieser Anleitung:
 
 - [Managing Application Dependencies](https://packaging.python.org/tutorials/managing-dependencies/)
@@ -166,11 +166,10 @@ GUI. Dies ist besonders im Bereich von Data-Science-Systemen üblich.
 (REPL)](https://en.wikipedia.org/wiki/Read–eval–print_loop) für Python. Damit wird die interaktive Arbeit mit Python-Systemen in besonders leistungsfähiger und komfortabler Art möglich. Python-Befehle werden hier interpretiert und deren
 Ergebnis auf dem Bildschirm ausgegeben. Dies kann neben Text auch eine grafische Ausgabe (z.B. Diagramme) sein und innerhalb von GUI-Anwendungen oder Webseiten eingebettet werden. Mit IPython ist zudem die interaktive Arbeit auf Cluster-Systemen möglich. Näheres über IPython findet sich hier:
 
-- [Jupyter and the future of IPython](https://ipython.org)
+- [IPython Website](https://ipython.org)
 - [IPython Documentation](https://ipython.readthedocs.io/en/stable/)
 
-Im VS2-Labor verwenden wir den enormen Umfang der IPython-Features kaum. Wir ersetzen damit lediglich die GUI-Ebene der von uns erstellten verteilten Systeme. Alle diese Systeme werden entweder als Skripte ausgeführt oder über
-eine IPython-Erweiterung direkt interaktiv benutzt. Genauer verwenden wir dazu Jupyter Notebooks. IPython selber braucht deshalb auch nicht installiert zu werden.
+Im VS2-Labor verwenden wir den enormen Umfang der IPython-Features kaum. Wir ersetzen damit lediglich die GUI-Ebene der von uns erstellten verteilten Systeme. Diese Systeme werden entweder als Skripte ausgeführt oder interaktiv benutzt – in der IPython-Konsole (z.B. ``pipenv run ipython``) oder in Jupyter Notebooks, die auf IPython aufbauen. IPython muss nicht separat installiert werden; es wird wie Jupyter per ``pipenv install`` eingebunden (siehe 2.3).
 
 #### 2.4.3. Jupyter
 
@@ -193,7 +192,7 @@ cd vs2lab # angenommen hier liegt das vs2lab Repo
 pipenv run jupyter notebook --ip 127.0.0.1
 ```
 
-Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öffnen (lassen). Stoppen Sie den Server bei Bedarf mit ``ctrl-c``.
+Lokal öffnet sich in der Regel ein Browserfenster mit einer Übersicht der Dateien im Ordner. Im Dev Container läuft der Server dagegen im Container: VS Code leitet den Port weiter, und Sie öffnen die im Terminal ausgegebene URL (inkl. Token) selbst im Browser. Stoppen Sie den Server bei Bedarf mit ``Ctrl-C``.
 
 ### 2.5. Tipps und Troubleshooting
 
@@ -204,7 +203,7 @@ Es sollte sich ein Browserfenster mit einer Übersicht der Dateien im Ordner öf
 
 #### Git
 
-- Das Repository kann auch per ``ssh`` geklont werden. Hierzu benötigen Sie ein Benutzerkonto auf dem Git-Server und müssen dort einen Schlüssel hinterlegen.
+- Das Repository kann auch per SSH geklont werden (``git clone git@github.com:zirpins/vs2lab.git``). Hierzu benötigen Sie ein GitHub-Konto, in dem Sie Ihren öffentlichen SSH-Schlüssel hinterlegen.
 
 #### pipenv
 
@@ -228,3 +227,4 @@ Die Aufgaben sind in den Unterverzeichnissen des Repositorys beschrieben:
 - [Labor 6](lab6/README.md) – Fehlertoleranz bei atomaren Commitment-Protokollen
 
 Termine und Abgaberegeln finden Sie im Ablaufplan bzw. in der Laborübersicht im ILIAS-Kurs.
+	
