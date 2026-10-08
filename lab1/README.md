@@ -167,11 +167,11 @@ Im Test wird ein Thread für die Ausführung des Servers verwendet. Näheres daz
 
 ## 3. Aufgabe
 
-Nun sind Sie an der Reihe. Implementieren Sie den Telefonauskunftdienst, den wir in der Vorlesung als Beispiel für Multi-Tier-Architekturen diskutiert haben.
+Nun sind Sie an der Reihe. Implementieren Sie den Telefonauskunftsdienst, den wir in der Vorlesung als Beispiel für Multi-Tier-Architekturen diskutiert haben.
 
 ### 3.1. Übersicht
 
-Ihre Implementierung soll als 2-Tier-Architektur realisiert sein (d.h. ein Prozess für den Auskunft-Client mit Benutzerschnittstelle und ein Prozess für den Auskunft-Server). Für den Kommunikationskanal verwenden Sie eine TCP-Verbindung über die Socket-Schnittstelle. Der Auskunft-Dienst soll als Anwendungsschicht über der Transportschicht implementiert werden. Die Nutzung des Auskunft-Dienstes soll über eine Auskunft-API-Schnittstelle erfolgen (siehe Abbildung). Verwenden Sie als Basis der Implementierung das Beispiel-Skript `clientserver.py` und erweitern Sie es entsprechend den Anforderungen des Auskunftsdienstes.
+Ihre Implementierung soll als 2-Tier-Architektur realisiert sein (d.h. ein Prozess für den Auskunft-Client mit Benutzerschnittstelle und ein Prozess für den Auskunft-Server). Für den Kommunikationskanal verwenden Sie eine TCP-Verbindung über die Socket-Schnittstelle. Der Auskunft-Dienst soll als Anwendungsschicht über der Transportschicht implementiert werden. Die Nutzung des Auskunft-Dienstes soll über eine Auskunft-API-Schnittstelle erfolgen (siehe Abbildung). Verwenden Sie als Basis der Implementierung das Beispiel-Skript `clientserver.py` und erweitern Sie es entsprechend den Anforderungen des Auskunft-Dienstes.
 
 ![Schichtenarchitektur](img/auskunft_arch.png "Schichtenarchitektur") 
 
@@ -182,7 +182,7 @@ Die Benutzerschnittstelle ist ein Jupyter Notebook, das das Skript `clientserver
 
 Auch der Auskunft-Server soll als Prozess in einem zweiten Jupyter Notebook laufen. Dessen Telefon-Datenbank können Sie „In-Memory“ als Python [Dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) implementieren. 
 
-Konzentrieren Sie sich auf den Entwurf und die Implementierung eines Protokolls für den Telefonauskunftdienst (Auskunft-Protokoll). Hierbei müssen Sie die notwendigen Arten von Nachrichten, deren Kodierung als Byte- bzw. Textfolge und deren Abfolge festlegen.
+Konzentrieren Sie sich auf den Entwurf und die Implementierung eines Protokolls für den Telefonauskunftsdienst (Auskunft-Protokoll). Hierbei müssen Sie die notwendigen Arten von Nachrichten, deren Kodierung als Byte- bzw. Textfolge und deren Abfolge festlegen.
 
 ### 3.2. Weitere Anforderungen
 
