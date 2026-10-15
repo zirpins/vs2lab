@@ -284,3 +284,6 @@ $RECYCLE.BIN/
 
 *.zip
 .vscode/
+
+# Pipenv lock file (lokal erzeugt)
+Pipfile.lock
