@@ -2,7 +2,7 @@
 
 Das zweite Labor beschäftigt sich hauptsächlich mit **RPC-Kommunikation** in verschiedenen Varianten. Ein erstes Beispiel zeigt eine einfache RPC-Implementierung im Detail und nutzt dabei einen generischen **Kommunikationskanal (Channel)** den wir später noch öfter verwenden werden.
 
-Ein zweites Beispiel zeigt kurz die Anwendung des speziellen RPC-Frameworks **RPyC**. Die Programmieraufgabe beschäftigt sich mit der Erweiterung der einfachen RPC-Implementierung um **asynchrone RPCs**.
+Ein zweites Beispiel zeigt kurz die Anwendung des speziellen RPC-Frameworks **RPyC**. Ein drittes, optionales Beispiel zeigt mit **gRPC** ein aktuelles RPC-Framework mit Schnittstellenbeschreibung (IDL) und generierten Stubs. Die Programmieraufgabe beschäftigt sich mit der Erweiterung der einfachen RPC-Implementierung um **asynchrone RPCs**.
 
 Allgemeine **Ziele** dieses Labors:
 
@@ -63,7 +63,7 @@ cd lab2
 
 ## 2. Beispiele für RPC-Kommunikation
 
-Das Labor beginnt mit zwei Beispielen zur RPC-Kommunikation.
+Das Labor beginnt mit drei Beispielen zur RPC-Kommunikation (2.1 und 2.3 sind optional, 2.2 ist die Grundlage der Programmieraufgabe).
 
 ### 2.1. Anwendung von RPCs auf *Sprachebene* mit dem **rpyc**-Framework
 
@@ -179,6 +179,62 @@ pipenv run python runsrv.py
 cd ~/git/vs2lab/lab2/rpc
 pipenv run python runcl.py
 ```
+
+### 2.3. RPC mit Schnittstellenbeschreibung: **gRPC** (optional)
+
+[gRPC](https://grpc.io) ist ein heute weit verbreitetes RPC-Framework, z.B. für die Kommunikation zwischen Microservices. Anders als bei RPyC wird die Schnittstelle sprachunabhängig in einer *Interface Definition Language* (IDL) beschrieben, den **Protocol Buffers**. Der Compiler `protoc` erzeugt daraus Client-Stub und Server-Basisklasse für die gewünschte Programmiersprache. Das Beispiel entspricht der Vorlesungsfolie „RPC heute: gRPC“ (Kap. 04) und implementiert denselben `DBList`-Dienst wie das RPyC-Beispiel, diesmal mit typisierter Schnittstelle. Für die Programmieraufgabe wird es nicht gebraucht.
+
+Das Beispiel finden Sie hier:
+
+```bash
+$ cd ~/git/vs2lab/lab2/grpc
+$ ls
+client.py  constGRPC.py  context.py  dblist.proto  server.py  watch.py
+```
+
+- `dblist.proto` beschreibt die Schnittstelle: `Append` ist ein normaler (unärer) RPC, `Watch` ein *Server-Streaming*-RPC, der alle gespeicherten und danach jedes neu angehängte Element als eigene Nachricht liefert.
+- `server.py` implementiert den Dienst (Klasse `DBList` erbt von der generierten Basisklasse `DBListServicer`) und bearbeitet Aufrufe in einem Thread-Pool.
+- `client.py` ruft `Append` einmal synchron mit Deadline (`timeout=1.0`) und einmal asynchron (`future`) auf und zeigt, dass ein falscher Parametertyp schon im Client-Stub auffällt.
+- `watch.py` abonniert den Stream von `Watch` für 30 Sekunden.
+
+Die Pakete `grpcio` und `grpcio-tools` sind im `Pipfile` eingetragen. Falls Ihre Umgebung älter ist, installieren Sie sie mit `pipenv install` nach.
+
+Vor dem ersten Start erzeugen Sie die Stubs aus der IDL (und erneut nach jeder Änderung an `dblist.proto`):
+
+```bash
+cd ~/git/vs2lab/lab2/grpc
+pipenv run python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. dblist.proto
+```
+
+Dabei entstehen `dblist_pb2.py` (Nachrichtentypen) und `dblist_pb2_grpc.py` (Client-Stub `DBListStub`, Server-Basisklasse `DBListServicer`). Schauen Sie sich die generierten Dateien kurz an. Sie werden nicht ins Repository eingecheckt (siehe `.gitignore`).
+
+Zum Ausprobieren starten Sie erst den Server:
+
+```bash
+cd ~/git/vs2lab/lab2/grpc
+pipenv run python server.py
+```
+
+In einem zweiten Terminal starten Sie den Watcher:
+
+```bash
+cd ~/git/vs2lab/lab2/grpc
+pipenv run python watch.py
+```
+
+In einem dritten Terminal rufen Sie (mehrfach) den Client auf und beobachten die Ausgaben des Watchers:
+
+```bash
+cd ~/git/vs2lab/lab2/grpc
+pipenv run python client.py
+```
+
+Vergleichen Sie mit dem RPyC-Beispiel: Wo steht die Schnittstelle, wer erzeugt die Stubs, und wann fällt ein Typfehler auf?
+
+Detaillierte Informationen zu gRPC finden Sie hier:
+
+- [gRPC Quick Start für Python](https://grpc.io/docs/languages/python/quickstart/)
+- [Protocol Buffers: Language Guide (proto3)](https://protobuf.dev/programming-guides/proto3/)
 
 ## 3 Aufgabe
 

@@ -1,0 +1,4 @@
+# von protoc generierter Code (siehe README, Abschnitt gRPC)
+dblist_pb2.py
+dblist_pb2.pyi
+dblist_pb2_grpc.py

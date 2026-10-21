@@ -1,0 +1,11 @@
+// Schnittstelle des DBList-Dienstes (vgl. Vorlesung Kap. 04, Folie "RPC heute: gRPC")
+syntax = "proto3";
+
+service DBList {
+  rpc Append (Item) returns (ItemList);     // unaerer RPC: Element anhaengen, Liste zurueck
+  rpc Watch (Empty) returns (stream Item);  // Server-Streaming: alle Elemente, dann neue
+}
+
+message Item     { string data = 1; }
+message ItemList { repeated string data = 1; }
+message Empty    {}

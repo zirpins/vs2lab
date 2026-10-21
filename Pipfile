@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 redis = "*"
 rpyc = "*"
+grpcio = "*"
+grpcio-tools = "*"
 zmq = "*"
 ipython = "*"
 jupyter = "*"
