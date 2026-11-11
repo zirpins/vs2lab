@@ -15,10 +15,10 @@ prt = constPipe.PORT1 if me == '1' else constPipe.PORT2  # check task src port
 context = zmq.Context()
 push_socket = context.socket(zmq.PUSH)  # create a push socket
 
-address = "tcp://" + src + ":" + prt  # how and where to connect
+address = "tcp://" + src + ":" + prt  # how and where to bind
 push_socket.bind(address)  # bind socket to address
 
-time.sleep(1) # wait to allow all clients to connect
+time.sleep(1)  # give all workers time to connect (needed for an even distribution)
 
 for i in range(100):  # generate 100 workloads
     workload = random.randint(1, 100)  # compute workload

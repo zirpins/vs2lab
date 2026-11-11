@@ -11,5 +11,5 @@ subscriber.connect(address)  # connect to the server
 subscriber.setsockopt(zmq.SUBSCRIBE, b"TIME")  # subscribe to TIME messages
 
 for i in range(5):  # Five iterations
-    time = subscriber.recv()  # receive a message
-    print(time)
+    msg = subscriber.recv()  # receive a message
+    print(msg)

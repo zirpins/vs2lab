@@ -2,8 +2,8 @@ import zmq
 
 import constRR
 
-address1 = "tcp://" + constRR.HOST + ":" + constRR.PORT1  # how and where to connect
-address2 = "tcp://" + constRR.HOST + ":" + constRR.PORT2  # how and where to connect
+address1 = "tcp://" + constRR.HOST + ":" + constRR.PORT1  # how and where to bind
+address2 = "tcp://" + constRR.HOST + ":" + constRR.PORT2  # how and where to bind
 
 context = zmq.Context()
 reply_socket = context.socket(zmq.REP)  # create reply socket
