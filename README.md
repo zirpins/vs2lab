@@ -84,7 +84,7 @@ Verwendete Module der Standardbibliothek sind u.a.
 - threading ([thread-based parallelism](https://docs.python.org/3/library/threading.html))
 - multiprocessing ([process-based parallelism](https://docs.python.org/3/library/multiprocessing.html))
 
-Diese Module gehören zur Python-Standardbibliothek und müssen nicht installiert werden. Zusätzliche Pakete (u.a. ``redis``, ``rpyc``, ``zmq``, ``ipython``, ``jupyter``) sind im ``Pipfile`` festgelegt und werden bei der Einrichtung der Python-Umgebung eingebunden (siehe 2.3).
+Diese Module gehören zur Python-Standardbibliothek und müssen nicht installiert werden. Zusätzliche Pakete (u.a. ``redis``, ``rpyc``, ``pyzmq``, ``ipython``, ``jupyter``) sind im ``Pipfile`` festgelegt und werden bei der Einrichtung der Python-Umgebung eingebunden (siehe 2.3).
 
 #### 2.2.2. Redis (erst ab Aufgabe 2)
 

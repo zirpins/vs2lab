@@ -23,7 +23,7 @@ Allgemeine **Ziele** dieses Labors:
 
 Für diese Aufgabe werden keine neuen Installationen benötigt. Sie arbeiten in der
 Umgebung aus den vorherigen Aufgaben (optimalerweise Visual Studio Code mit dem
-Dev Container). Das Package `zmq` (pyzmq) ist Teil der vorgegebenen
+Dev Container). Das Package `pyzmq` ist Teil der vorgegebenen
 Python-Umgebung.
 
 ### 1.2. Projekt aktualisieren
