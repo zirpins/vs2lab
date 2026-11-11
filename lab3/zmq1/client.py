@@ -16,5 +16,5 @@ for i in range(3): # 3 times
     message = requester.recv()  # block until response
     print(message.decode() + " " + str(i+1) + " time")  # print result
 
-time.sleep(1) 
+time.sleep(1)  # give other clients time to finish (STOP ends the server)
 requester.send(b"STOP")  # tell server to stop

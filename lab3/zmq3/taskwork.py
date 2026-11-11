@@ -19,6 +19,6 @@ pull_socket.connect(address2)  # connect to task source 2
 print("{} started".format(me))
 
 while True:
-    src_id, workload = pickle.loads(pull_socket.recv())  # receive work from a source
+    src_id, workload = pickle.loads(pull_socket.recv())  # receive work from a source (pickle: trusted peers only)
     print("{} received workload {} from {}".format(me, workload, src_id))
     time.sleep(workload * 0.01)  # pretend to work
