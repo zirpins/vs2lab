@@ -244,4 +244,4 @@ gezählten Wortes ausgeben.
 
 ### 3.4. Abgabe
 
-Laden Sie den kompletten Code vor dem Abgabetermin als Zip-Archiv in ILIAS hoch. Die Abgabe erfolgt dann durch persönliche Abnahme im Labortermin (Zeitslot über den ILIAS-Buchungspool); ohne Upload erfolgt keine Abnahme. Den Abgabetermin finden Sie im Ablaufplan.
+Laden Sie den kompletten Code vor dem Abgabetermin als Zip-Archiv in ILIAS hoch. Die Abgabe erfolgt dann durch persönliche Abnahme im Labortermin (Zeitslot über den ILIAS-Buchungspool); ohne Upload erfolgt keine Abnahme. Bei der Abnahme muss jedes Gruppenmitglied den Code erklären können. Den Abgabetermin finden Sie im Ablaufplan.
